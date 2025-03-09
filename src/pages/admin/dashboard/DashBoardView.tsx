@@ -21,7 +21,10 @@ import { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
 const DashBoardView = ({ user, payment }: any) => {
-  const [filterModel, setFilterModel] = useState({
+  const [filterModel1, setFilterModel1] = useState({
+    items: [],
+  });
+  const [filterModel2, setFilterModel2] = useState({
     items: [],
   });
 
@@ -58,8 +61,8 @@ const DashBoardView = ({ user, payment }: any) => {
             },
           }}
           filterMode='client'
-          filterModel={filterModel}
-          onFilterModelChange={(model: any) => setFilterModel(model)}
+          filterModel={filterModel1}
+          onFilterModelChange={(model: any) => setFilterModel1(model)}
           localeText={{
             // Dịch menu cột
             columnMenuSortAsc: "Sắp xếp tăng dần",
@@ -105,8 +108,8 @@ const DashBoardView = ({ user, payment }: any) => {
             },
           }}
           filterMode='client'
-          filterModel={filterModel}
-          onFilterModelChange={(model: any) => setFilterModel(model)}
+          filterModel={filterModel2}
+          onFilterModelChange={(model: any) => setFilterModel2(model)}
           localeText={{
             // Dịch menu cột
             columnMenuSortAsc: "Sắp xếp tăng dần",

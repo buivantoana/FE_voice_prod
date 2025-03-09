@@ -187,7 +187,6 @@ const DashBoardController = (props: Props) => {
                   className='search-input'
                   id='password'
                   name='password'
-                  autoFocus
                   type='password'
                   error={!!errors.password}
                   helperText={errors.password}
