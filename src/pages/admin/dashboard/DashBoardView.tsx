@@ -31,6 +31,7 @@ const DashBoardView = ({ user, payment }: any) => {
   const columns1 = [
     { field: "id", headerName: "ID", width: 90 },
     { field: "user_id", headerName: "User Id", flex: 1 },
+     { field: "credits", headerName: "Credits", flex: 1 },
     { field: "limit_txt", headerName: "Limit TXT", flex: 1 },
     { field: "token", headerName: "Token", flex: 1 },
     { field: "favorite_voice", headerName: "Favorite Voice", width: 400 },
