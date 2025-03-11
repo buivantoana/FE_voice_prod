@@ -16,12 +16,13 @@ import NotFound from "../components/NotFound";
 import MaterialVideoController from "../pages/material_video/MaterialVideoController";
 import DashBoardController from "../pages/admin/dashboard/DashBoardController";
 import LayoutAdmin from "../components/layouts/LayoutAdmin";
+import useUTMTracker from "../components/useUTMTracker";
 
 const Router = () => {
   const context: any = useCoursesContext();
-
+  useUTMTracker()
   return (
-    <BrowserRouter>
+   
       <Routes>
         <Route path='/' element={<LayoutWebsite />}>
           <Route path='' element={<VocalizeController />} />
@@ -62,7 +63,6 @@ const Router = () => {
         <Route path='auth/callback' element={<SignUpController />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
   );
 };
 

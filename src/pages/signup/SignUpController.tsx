@@ -10,7 +10,6 @@ import {
 } from "../../service/auth";
 import Loading from "../../components/Loading";
 import { toast } from "react-toastify";
-import { useLocalStorage } from "../../hooks/useStorage";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -56,7 +55,7 @@ const SignUpController = (props: Props) => {
       let data = await signIn(auth_code);
       console.log(data);
       if (data.code == 0) {
-        let webhook = await signupWebHook({ user_id: data.data.user.phone });
+        let webhook = await signupWebHook({ user_id: data.data.user.phone ,utm:localStorage.getItem("utm")});
         if (webhook.code == 0) {
           localStorage.setItem(
             "access_token",
@@ -151,7 +150,7 @@ const SignUpController = (props: Props) => {
       let data = await signup({ phone, otp, open_id: openId });
       console.log(data);
       if (data.code == 0) {
-        let webhook = await signupWebHook({ user_id: data.data.user.phone });
+        let webhook = await signupWebHook({ user_id: data.data.user.phone,utm:localStorage.getItem("utm") });
         if (webhook.code == 0) {
           localStorage.setItem(
             "access_token",

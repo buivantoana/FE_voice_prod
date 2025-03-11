@@ -9,6 +9,7 @@ import theme from "./theme";
 import { getInfo } from "./service/voice";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./translation/i18n";
+import { BrowserRouter } from "react-router-dom";
 const queryClient = new QueryClient();
 export const coursesContext = createContext({});
 
@@ -56,6 +57,7 @@ const App = () => {
     tts_story: "",
   });
   let user = localStorage.getItem("user");
+
   useEffect(() => {
     if (user) {
       (async () => {
@@ -80,7 +82,9 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <QueryClientProvider client={queryClient}>
             <coursesContext.Provider value={{ dispatch, state }}>
-              <Router />
+              <BrowserRouter>
+                <Router />
+              </BrowserRouter>
             </coursesContext.Provider>
           </QueryClientProvider>
         </ThemeProvider>
