@@ -24,7 +24,7 @@ const DashBoardView = ({ user, payment }: any) => {
     if (activeTab && activeTab == "payment") {
       setActive({ payment: true, user: false, overview: false });
     }
-  }, [params]);
+  }, [activeTab]);
   return (
     <Box>
       {active.user && (
