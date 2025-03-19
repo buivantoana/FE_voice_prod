@@ -132,7 +132,7 @@ const SignUpController = (props: Props) => {
         toast.warning("Số điện thoại đã được sử dụng hoặc không hợp lệ.");
       }
       if (verify_phone.code == 1001) {
-        toast.warning("Số điện thoại đã được sử dụng hoặc không hợp lệ.");
+        toast.warning("Số điện thoại đã được liên kết với 1 tài khoản khác trên gmv.vn, vui lòng dùng số điện thoại khác!");
       }
     } catch (error) {
       console.log(error);

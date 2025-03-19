@@ -9,7 +9,7 @@ import {
   Legend,
   ArcElement,
 } from "chart.js";
-import { subDays, isSameDay, isSameWeek, isSameMonth } from "date-fns";
+
 import ChartDataLabels from "chartjs-plugin-datalabels";
 
 ChartJS.register(
@@ -25,21 +25,44 @@ ChartJS.register(
 const Overview = ({ user, payment }: any) => {
   const today = new Date();
 
+  today.setHours(0, 0, 0, 0); // Đảm bảo chỉ xét ngày, không xét giờ
+
+  const isSameDayJS = (date1, date2) => date1.toDateString() === date2.toDateString();
+
+  const isSameWeekJS = (date1, date2) => {
+    const d1 = new Date(date1);
+    const d2 = new Date(date2);
+    d1.setHours(0, 0, 0, 0);
+    d2.setHours(0, 0, 0, 0);
+
+    const firstDayOfWeek = new Date(d2);
+    firstDayOfWeek.setDate(d2.getDate() - d2.getDay() + 1);
+
+    const lastDayOfWeek = new Date(firstDayOfWeek);
+    lastDayOfWeek.setDate(firstDayOfWeek.getDate() + 6);
+
+    return d1 >= firstDayOfWeek && d1 <= lastDayOfWeek;
+  };
+
+  const isSameMonthJS = (date1, date2) =>
+    date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth();
+
   const filterRevenue = (filterFn: (date: Date) => boolean) => {
     return payment
-      .filter((p: any) => filterFn(new Date(p.date)))
+      .filter((p: any) => p.status === "success" && filterFn(new Date(p.date)))
       .reduce((acc: number, p: any) => acc + p.amount, 0);
   };
 
+
   const summary = {
-    today: filterRevenue((date) => isSameDay(date, today)),
-    yesterday: filterRevenue((date) => isSameDay(date, subDays(today, 1))),
-    thisWeek: filterRevenue((date) =>
-      isSameWeek(date, today, { weekStartsOn: 1 })
-    ),
-    thisMonth: filterRevenue((date) => isSameMonth(date, today)),
-    total: payment.reduce((acc: number, p: any) => acc + p.amount, 0),
+    today: filterRevenue(date => isSameDayJS(date, new Date())),
+    yesterday: filterRevenue(date => isSameDayJS(date, new Date(new Date().setDate(new Date().getDate() - 1)))),
+    thisWeek: filterRevenue(date => isSameWeekJS(date, new Date())),
+    thisMonth: filterRevenue(date => isSameMonthJS(date, new Date())),
+    total: payment.filter((p: any) => p.status === "success").reduce((acc: number, p: any) => acc + p.amount, 0),
   };
+
+  console.log(summary);
 
   const data = {
     labels: ["Hôm nay", "Hôm qua", "Tuần này", "Tháng này", "Tổng cộng"],
@@ -88,57 +111,20 @@ const Overview = ({ user, payment }: any) => {
       legend: { display: true },
     },
   };
-  let data_fake = [
-    {
-      code_payment: "PAYMENT09745731281738654070860",
-      user_id: "0974573128",
-      amount: 200000.0,
-      date: "2025-02-04T07:27:50",
-      status: "pending",
-    },
-    {
-      code_payment: "PAYMENT09745731281738654076370",
-      user_id: "0974573128",
-      amount: 200000.0,
-      date: "2025-02-04T07:27:56",
-      status: "pending",
-    },
-    {
-      code_payment: "PAYMENT09745731281738654076370",
-      user_id: "0974573128",
-      amount: 200000.0,
-      date: "2025-02-04T07:27:56",
-      status: "cancelled",
-    },
-    {
-      code_payment: "PAYMENT09745731281738654076370",
-      user_id: "0974573128",
-      amount: 200000.0,
-      date: "2025-02-04T07:27:56",
-      status: "success",
-    },
-    {
-      code_payment: "PAYMENT09745731281738654076370",
-      user_id: "0974573128",
-      amount: 200000.0,
-      date: "2025-02-04T07:27:56",
-      status: "success",
-    },
-  ];
+
   const statusCount = {
-    success: data_fake.filter((p: any) => p.status === "success").length,
-    pending: data_fake.filter((p: any) => p.status === "pending").length,
-    cancelled: data_fake.filter((p: any) => p.status === "cancelled").length,
+    success: payment.filter((p: any) => p.status === "success").length,
+    pending: payment.filter((p: any) => p.status === "pending").length,
   };
 
   const dataCountPayment = {
-    labels: ["Đã hoàn tất", "Đang xử lý", "Bị hủy"],
+    labels: ["Đã hoàn tất", "Đang xử lý"],
     datasets: [
       {
         label: "Số lượng giao dịch",
         data: Object.values(statusCount),
-        backgroundColor: ["#4caf50", "#ff9800", "#f44336"],
-        borderColor: ["#388e3c", "#f57c00", "#d32f2f"],
+        backgroundColor: ["#4caf50", "#ff9800"],
+        borderColor: ["#388e3c", "#f57c00"],
         borderWidth: 1,
       },
     ],

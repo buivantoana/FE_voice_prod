@@ -252,5 +252,8 @@
   "exports": "Export",
   "materials_to_video": "Materials to Video",
   "select_all": "Select All",
-  "clear_all": "Clear All"
+  "clear_all": "Clear All",
+  "contact":"Contact",
+  "close":"Close",
+  "close_later":"Close later"
 }

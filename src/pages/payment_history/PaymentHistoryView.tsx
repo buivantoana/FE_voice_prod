@@ -100,6 +100,7 @@ const PaymentHistoryView = ({ history, loadingHistory }: Props) => {
                                       {convertToVND(item.amount)}
                                     </Typography>
                                     <Box display={"flex"} gap={"10px"}>
+                                      {item.status == "pending"?
                                       <Button
                                         sx={{
                                           borderRadius: "5px",
@@ -112,7 +113,20 @@ const PaymentHistoryView = ({ history, loadingHistory }: Props) => {
                                         }}
                                         variant='contained'>
                                         {item.status}
+                                      </Button>:<Button
+                                        sx={{
+                                          borderRadius: "5px",
+                                          padding: "2px 0px",
+                                          backgroundColor: "rgb(205 255 199)", // Màu nền của nút
+                                          color: "rgb(21 72 9)", // Màu chữ
+                                          "&:hover": {
+                                            backgroundColor: "rgb(205 255 199)", // Màu nền khi hover
+                                          },
+                                        }}
+                                        variant='contained'>
+                                        {item.status}
                                       </Button>
+                                      }
                                     </Box>
                                   </Box>
                                   <Typography

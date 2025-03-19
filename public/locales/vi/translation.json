@@ -254,5 +254,8 @@
   "exports": "Xuất",
   "materials_to_video": "Nguyên liệu cho video",
   "select_all": "Chọn tất cả",
-  "clear_all": "Hủy chọn tất cả"
+  "clear_all": "Hủy chọn tất cả",
+  "contact":"Liên hệ",
+  "close":"Đóng",
+  "close_later":"Đóng sau"
 }

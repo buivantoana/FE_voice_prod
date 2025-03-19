@@ -21,7 +21,7 @@ const Footer = () => {
         {t("contact_us")}:{" "}
         <span style={{ color: theme.palette.active.main, fontWeight: "bold" }}>
           {" "}
-          support@gmv.vn
+          ai@gmv.vn
         </span>
       </Typography>
     </Box>

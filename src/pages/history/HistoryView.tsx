@@ -22,6 +22,7 @@ import {
   RiCloseLine,
   RiDownload2Line,
   RiLoopLeftFill,
+  RiPlayCircleFill,
   RiPlayFill,
   RiVoiceprintFill,
   RiZhihuFill,
@@ -398,11 +399,12 @@ const HistoryView = ({ voices, loadingVoices, deleteVoice }: any) => {
 
 export default HistoryView;
 function AudioPlayer({ width, voice_id, content, speed, type }: any) {
-  const [mp3, setMp3] = useState<string>("");
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const navigate: any = useNavigate();
-  const context: any = useCoursesContext();
-  // Function to call API and fetch MP3
+  const [mp3, setMp3] = useState<string>(""); // State để lưu URL MP3
+  const audioRef = useRef<HTMLAudioElement>(null); // Ref cho audio element
+  const navigate = useNavigate();
+  const context:any = useCoursesContext();
+  const theme = useTheme();
+  // Function để gọi API và lấy MP3
   const fetchMp3 = async () => {
     try {
       const data = await getPlayVoice({ voice_id });
@@ -418,48 +420,58 @@ function AudioPlayer({ width, voice_id, content, speed, type }: any) {
           { type: "audio/mp3" }
         );
         const url = URL.createObjectURL(audioBlob);
-        setMp3(url); // Set MP3 URL in state
-
-        // Play audio after URL is set
-        // if (audioRef.current) {
-        //   audioRef.current.load(); // Reload the audio element with the new source
-        //   audioRef.current.play(); // Start playing
-        // }
+        setMp3(url); // Cập nhật URL vào state
+        return url; // Trả về URL để sử dụng
       }
     } catch (error) {
       console.error("Error fetching MP3:", error);
     }
   };
 
-  // Handler for play button
-  useEffect(() => {
+  // Xử lý khi nhấn nút Play
+  const handlePlayClick = () => {
     if (!mp3) {
-      fetchMp3();
+      // Nếu chưa có mp3, gọi API và phát
+      fetchMp3().then((url) => {
+        if (audioRef.current && url) {
+          audioRef.current.load(); // Tải lại audio với nguồn mới
+          audioRef.current.play(); // Phát audio
+        }
+      });
+    } else if (audioRef.current) {
+      // Nếu đã có mp3, chỉ cần phát
+      audioRef.current.play();
     }
-  }, [mp3]);
-
-  // Event handler for when playback ends
+  };
 
   return (
     <>
       <Box display={"flex"} width={"100%"} alignItems={"center"}>
-        <Box width={"95%"}>
-          <audio ref={audioRef} style={{ width: "98%" }} controls>
-            {mp3 && <source src={mp3} type='audio/mpeg' />}
+        <Box width={"95%"} display={"flex"} alignItems={"center"} position={"relative"} gap={2}>
+          {/* Nút Play riêng */}
+          {!mp3&&
+          <RiPlayCircleFill style={{position:"absolute",top:"12px",left:"10px",zIndex:"100",cursor:"pointer"}} onClick={handlePlayClick} color={theme.palette.active.main} size={30}/>}
+           <audio ref={audioRef} style={{ width: "98%" }} controls>
+            {mp3 && <source src={mp3} type="audio/mpeg" />}
             Your browser does not support the audio element.
           </audio>
+         
         </Box>
+        
         <Box
           display={"flex"}
           gap={"10px"}
           sx={{ cursor: "pointer" }}
-          alignItems={"center"}>
+          alignItems={"center"}
+        >
+          {mp3&&
           <a
             href={mp3}
-            download='audio.mp3'
-            style={{ display: "block", marginTop: "10px" }}>
+            download="audio.mp3"
+            style={{ display: "block", marginTop: "10px" }}
+          >
             <FileDownloadIcon />
-          </a>
+          </a>}
           <RiLoopLeftFill
             onClick={() => {
               context.dispatch({
@@ -468,21 +480,19 @@ function AudioPlayer({ width, voice_id, content, speed, type }: any) {
                   ...context.state,
                   history: {
                     content:
-                      type == "story"
-                        ? JSON.parse(content).map(
-                            (item: any, index: number) => {
-                              return {
-                                id: index + 1,
-                                name: item.name,
-                                text: item.text,
-                                delay: item.delay,
-                                voice: item.id,
-                                speed: item.speed,
-                                open: false,
-                                title:item.voice_name?item.voice_name:""
-                              };
-                            }
-                          )
+                      type === "story"
+                        ? JSON.parse(content).map((item: any, index: number) => {
+                            return {
+                              id: index + 1,
+                              name: item.name,
+                              text: item.text,
+                              delay: item.delay,
+                              voice: item.id,
+                              speed: item.speed,
+                              open: false,
+                              title: item.voice_name ? item.voice_name : "",
+                            };
+                          })
                         : content,
                     speed: speed,
                     type,
@@ -505,7 +515,6 @@ function AudioPlayer({ width, voice_id, content, speed, type }: any) {
     </>
   );
 }
-
 import { alpha } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
