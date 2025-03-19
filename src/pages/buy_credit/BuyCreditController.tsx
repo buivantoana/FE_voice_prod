@@ -47,19 +47,20 @@ const BuyCreditController = () => {
     setOpenQr(false);
   };
   const handleConfirmPayment = async () => {
-    handleClick()
+    
     try {
-      let data = await confirmPayment({ payment_id: `${codePayment}` });
-      if (data.code == 0) {
-        context.dispatch({
-          type: "PAYMENT",
-          payload: {
-            ...context.state,
-            user: { ...context.state.user, credits: data.data.credits },
-          },
-        });
-        toast.success("Bạn đã nạp tiền thành công");
-      }
+      await handleClick()
+      // let data = await confirmPayment({ payment_id: `${codePayment}` });
+      // if (data.code == 0) {
+      //   context.dispatch({
+      //     type: "PAYMENT",
+      //     payload: {
+      //       ...context.state,
+      //       user: { ...context.state.user, credits: data.data.credits },
+      //     },
+      //   });
+      //   toast.success("Bạn đã nạp tiền thành công");
+      // }
     } catch (error) {
       console.log(error);
     }
@@ -67,14 +68,26 @@ const BuyCreditController = () => {
   const handleClick = () => {
     setDisabled(true);
     let timer = 10;
-    const interval = setInterval(() => {
+    const interval = setInterval(async() => {
       timer -= 1;
       setCountdown(timer);
       if (timer === 0) {
         clearInterval(interval);
         setDisabled(false)
         setCountdown(10)
-        handleCloseQr();
+        let data = await confirmPayment({ payment_id: `${codePayment}` });
+        if (data.code == 0) {
+          context.dispatch({
+            type: "PAYMENT",
+            payload: {
+              ...context.state,
+              user: { ...context.state.user, credits: data.data.credits },
+            },
+          });
+          toast.success("Bạn đã nạp tiền thành công");
+          handleCloseQr();
+        }
+        
       }
     }, 1000);
   };
