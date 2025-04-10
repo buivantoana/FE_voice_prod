@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://localhost:5173/translation -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="module">
+import RefreshRuntime from "/@react-refresh"
+RefreshRuntime.injectIntoGlobalHook(window)
+window.$RefreshReg$ = () => {}
+window.$RefreshSig$ = () => (type) => type
+window.__vite_plugin_react_preamble_installed__ = true
+</script>
+
+    <script type="module" src="./OpenAI Text To Speech_files/client"></script>
+
+    
+    <link rel="icon" type="image/svg+xml" href="./OpenAI Text To Speech_files/loading-lines-6747317-5601928.webp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI Text To Speech</title>
+  <style type="text/css" data-vite-dev-id="C:/Users/Admin/tai lieu/Máy tính/FE_voice_Prod/FE_voice_prod/src/App.css">.loader {
+  width: 8px;
+  height: 40px;
+  border-radius: 4px;
+  display: block;
+  background-color: currentColor;
+  margin: 20px auto;
+  position: relative;
+  color: #f2f2f2;
+  animation: animloader 0.3s 0.3s linear infinite alternate;
+}
+* {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */
+}
+.inputStyle {
+  width: 3rem !important;
+  height: 3rem;
+  margin: 0 0.5rem;
+  font-size: 2rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+a {
+  text-decoration: none;
+  color: unset;
+}
+.active {
+  border-bottom: 2px solid rgb(5 122 85);
+}
+.active div p {
+  color: rgb(5 122 85) !important;
+}
+body {
+  margin: 0px;
+}
+.hidden-add-voice::-webkit-scrollbar-track {
+  border: 0px solid transparent;
+  padding: 0;
+  background-color: transparent;
+}
+
+.hidden-add-voice::-webkit-scrollbar {
+  width: 0px;
+}
+
+.hidden-add-voice::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: transparent;
+  border: 0px solid transparent;
+}
+
+body::-webkit-scrollbar-track {
+  border: 0px solid transparent;
+  padding: 0;
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar {
+  width: 0px;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: transparent;
+  border: 0px solid transparent;
+}
+.hidden-story::-webkit-scrollbar-track {
+  border: 0px solid transparent;
+  padding: 0;
+  background-color: transparent;
+}
+
+.hidden-story::-webkit-scrollbar {
+  width: 0px;
+}
+
+.hidden-story::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: transparent;
+  border: 0px solid transparent;
+}
+
+.scroll-filter::-webkit-scrollbar-track {
+  border: 0px solid transparent;
+  padding: 0;
+  background-color: transparent;
+}
+
+.scroll-filter::-webkit-scrollbar {
+  width: 0px;
+}
+
+.scroll-filter::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: transparent;
+  border: 0px solid transparent;
+}
+.list-scroll::-webkit-scrollbar-track {
+  border: 0px solid transparent;
+  padding: 0;
+  background-color: transparent;
+}
+
+.list-scroll::-webkit-scrollbar {
+  width: 0px;
+}
+
+.list-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: transparent;
+  border: 0px solid transparent;
+}
+.css-kw13he-MuiDialogContent-root::-webkit-scrollbar-track {
+  border: 0px solid transparent;
+  padding: 0;
+  background-color: transparent;
+}
+
+.css-kw13he-MuiDialogContent-root::-webkit-scrollbar {
+  width: 0px;
+}
+
+.css-kw13he-MuiDialogContent-root::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: transparent;
+  border: 0px solid transparent;
+}
+.loader::after,
+.loader::before {
+  content: "";
+  width: 8px;
+  height: 40px;
+  border-radius: 4px;
+  background: currentColor;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 20px;
+  animation: animloader 0.3s 0.45s linear infinite alternate;
+}
+
+.loader::before {
+  left: -20px;
+  animation-delay: 0s;
+}
+
+@keyframes animloader {
+  0% {
+    height: 48px;
+  }
+
+  100% {
+    height: 4px;
+  }
+}
+/* .range_input {
+  transform: rotate(180deg) !important;
+} */
+/* .MuiPopover-paper {
+  display: none;
+} */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+/* .grouped-native-select {
+  padding: 7px;
+} */
+.MuiNativeSelect-select {
+  padding: 8px !important;
+}
+.more-select div {
+  padding: 10px;
+}
+</style><style type="text/css" data-vite-dev-id="C:/Users/Admin/tai lieu/Máy tính/FE_voice_Prod/FE_voice_prod/node_modules/react-toastify/dist/ReactToastify.css">:root {
+  --toastify-color-light: #fff;
+  --toastify-color-dark: #121212;
+  --toastify-color-info: #3498db;
+  --toastify-color-success: #07bc0c;
+  --toastify-color-warning: #f1c40f;
+  --toastify-color-error: #e74c3c;
+  --toastify-color-transparent: rgba(255, 255, 255, 0.7);
+  --toastify-icon-color-info: var(--toastify-color-info);
+  --toastify-icon-color-success: var(--toastify-color-success);
+  --toastify-icon-color-warning: var(--toastify-color-warning);
+  --toastify-icon-color-error: var(--toastify-color-error);
+  --toastify-toast-width: 320px;
+  --toastify-toast-offset: 16px;
+  --toastify-toast-top: max(var(--toastify-toast-offset), env(safe-area-inset-top));
+  --toastify-toast-right: max(var(--toastify-toast-offset), env(safe-area-inset-right));
+  --toastify-toast-left: max(var(--toastify-toast-offset), env(safe-area-inset-left));
+  --toastify-toast-bottom: max(var(--toastify-toast-offset), env(safe-area-inset-bottom));
+  --toastify-toast-background: #fff;
+  --toastify-toast-min-height: 64px;
+  --toastify-toast-max-height: 800px;
+  --toastify-toast-bd-radius: 6px;
+  --toastify-font-family: sans-serif;
+  --toastify-z-index: 9999;
+  --toastify-text-color-light: #757575;
+  --toastify-text-color-dark: #fff;
+  --toastify-text-color-info: #fff;
+  --toastify-text-color-success: #fff;
+  --toastify-text-color-warning: #fff;
+  --toastify-text-color-error: #fff;
+  --toastify-spinner-color: #616161;
+  --toastify-spinner-color-empty-area: #e0e0e0;
+  --toastify-color-progress-light: linear-gradient(
+    to right,
+    #4cd964,
+    #5ac8fa,
+    #007aff,
+    #34aadc,
+    #5856d6,
+    #ff2d55
+  );
+  --toastify-color-progress-dark: #bb86fc;
+  --toastify-color-progress-info: var(--toastify-color-info);
+  --toastify-color-progress-success: var(--toastify-color-success);
+  --toastify-color-progress-warning: var(--toastify-color-warning);
+  --toastify-color-progress-error: var(--toastify-color-error);
+  --toastify-color-progress-bgo: 0.2;
+}
+
+.Toastify__toast-container {
+  z-index: var(--toastify-z-index);
+  -webkit-transform: translate3d(0, 0, var(--toastify-z-index));
+  position: fixed;
+  padding: 4px;
+  width: var(--toastify-toast-width);
+  box-sizing: border-box;
+  color: #fff;
+}
+.Toastify__toast-container--top-left {
+  top: var(--toastify-toast-top);
+  left: var(--toastify-toast-left);
+}
+.Toastify__toast-container--top-center {
+  top: var(--toastify-toast-top);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.Toastify__toast-container--top-right {
+  top: var(--toastify-toast-top);
+  right: var(--toastify-toast-right);
+}
+.Toastify__toast-container--bottom-left {
+  bottom: var(--toastify-toast-bottom);
+  left: var(--toastify-toast-left);
+}
+.Toastify__toast-container--bottom-center {
+  bottom: var(--toastify-toast-bottom);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.Toastify__toast-container--bottom-right {
+  bottom: var(--toastify-toast-bottom);
+  right: var(--toastify-toast-right);
+}
+
+@media only screen and (max-width : 480px) {
+  .Toastify__toast-container {
+    width: 100vw;
+    padding: 0;
+    left: env(safe-area-inset-left);
+    margin: 0;
+  }
+  .Toastify__toast-container--top-left, .Toastify__toast-container--top-center, .Toastify__toast-container--top-right {
+    top: env(safe-area-inset-top);
+    transform: translateX(0);
+  }
+  .Toastify__toast-container--bottom-left, .Toastify__toast-container--bottom-center, .Toastify__toast-container--bottom-right {
+    bottom: env(safe-area-inset-bottom);
+    transform: translateX(0);
+  }
+  .Toastify__toast-container--rtl {
+    right: env(safe-area-inset-right);
+    left: initial;
+  }
+}
+.Toastify__toast {
+  --y: 0;
+  position: relative;
+  -ms-touch-action: none;
+      touch-action: none;
+  min-height: var(--toastify-toast-min-height);
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  padding: 8px;
+  border-radius: var(--toastify-toast-bd-radius);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  max-height: var(--toastify-toast-max-height);
+  font-family: var(--toastify-font-family);
+  cursor: default;
+  direction: ltr;
+  /* webkit only issue #791 */
+  z-index: 0;
+  overflow: hidden;
+}
+.Toastify__toast--stacked {
+  position: absolute;
+  width: 100%;
+  transform: translate3d(0, var(--y), 0) scale(var(--s));
+  transition: transform 0.3s;
+}
+.Toastify__toast--stacked[data-collapsed] .Toastify__toast-body, .Toastify__toast--stacked[data-collapsed] .Toastify__close-button {
+  transition: opacity 0.1s;
+}
+.Toastify__toast--stacked[data-collapsed=false] {
+  overflow: visible;
+}
+.Toastify__toast--stacked[data-collapsed=true]:not(:last-child) > * {
+  opacity: 0;
+}
+.Toastify__toast--stacked:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: calc(var(--g) * 1px);
+  bottom: 100%;
+}
+.Toastify__toast--stacked[data-pos=top] {
+  top: 0;
+}
+.Toastify__toast--stacked[data-pos=bot] {
+  bottom: 0;
+}
+.Toastify__toast--stacked[data-pos=bot].Toastify__toast--stacked:before {
+  transform-origin: top;
+}
+.Toastify__toast--stacked[data-pos=top].Toastify__toast--stacked:before {
+  transform-origin: bottom;
+}
+.Toastify__toast--stacked:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  transform: scaleY(3);
+  z-index: -1;
+}
+.Toastify__toast--rtl {
+  direction: rtl;
+}
+.Toastify__toast--close-on-click {
+  cursor: pointer;
+}
+.Toastify__toast-body {
+  margin: auto 0;
+  -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+  padding: 6px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+}
+.Toastify__toast-body > div:last-child {
+  word-break: break-word;
+  -ms-flex: 1;
+      flex: 1;
+}
+.Toastify__toast-icon {
+  -webkit-margin-end: 10px;
+          margin-inline-end: 10px;
+  width: 20px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.Toastify--animate {
+  animation-fill-mode: both;
+  animation-duration: 0.5s;
+}
+
+.Toastify--animate-icon {
+  animation-fill-mode: both;
+  animation-duration: 0.3s;
+}
+
+@media only screen and (max-width : 480px) {
+  .Toastify__toast {
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+}
+.Toastify__toast-theme--dark {
+  background: var(--toastify-color-dark);
+  color: var(--toastify-text-color-dark);
+}
+.Toastify__toast-theme--light {
+  background: var(--toastify-color-light);
+  color: var(--toastify-text-color-light);
+}
+.Toastify__toast-theme--colored.Toastify__toast--default {
+  background: var(--toastify-color-light);
+  color: var(--toastify-text-color-light);
+}
+.Toastify__toast-theme--colored.Toastify__toast--info {
+  color: var(--toastify-text-color-info);
+  background: var(--toastify-color-info);
+}
+.Toastify__toast-theme--colored.Toastify__toast--success {
+  color: var(--toastify-text-color-success);
+  background: var(--toastify-color-success);
+}
+.Toastify__toast-theme--colored.Toastify__toast--warning {
+  color: var(--toastify-text-color-warning);
+  background: var(--toastify-color-warning);
+}
+.Toastify__toast-theme--colored.Toastify__toast--error {
+  color: var(--toastify-text-color-error);
+  background: var(--toastify-color-error);
+}
+
+.Toastify__progress-bar-theme--light {
+  background: var(--toastify-color-progress-light);
+}
+.Toastify__progress-bar-theme--dark {
+  background: var(--toastify-color-progress-dark);
+}
+.Toastify__progress-bar--info {
+  background: var(--toastify-color-progress-info);
+}
+.Toastify__progress-bar--success {
+  background: var(--toastify-color-progress-success);
+}
+.Toastify__progress-bar--warning {
+  background: var(--toastify-color-progress-warning);
+}
+.Toastify__progress-bar--error {
+  background: var(--toastify-color-progress-error);
+}
+.Toastify__progress-bar-theme--colored.Toastify__progress-bar--info, .Toastify__progress-bar-theme--colored.Toastify__progress-bar--success, .Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning, .Toastify__progress-bar-theme--colored.Toastify__progress-bar--error {
+  background: var(--toastify-color-transparent);
+}
+
+.Toastify__close-button {
+  color: #fff;
+  background: transparent;
+  outline: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.3s ease;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  z-index: 1;
+}
+.Toastify__close-button--light {
+  color: #000;
+  opacity: 0.3;
+}
+.Toastify__close-button > svg {
+  fill: currentColor;
+  height: 16px;
+  width: 14px;
+}
+.Toastify__close-button:hover, .Toastify__close-button:focus {
+  opacity: 1;
+}
+
+@keyframes Toastify__trackProgress {
+  0% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0);
+  }
+}
+.Toastify__progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--toastify-z-index);
+  opacity: 0.7;
+  transform-origin: left;
+  border-bottom-left-radius: var(--toastify-toast-bd-radius);
+}
+.Toastify__progress-bar--animated {
+  animation: Toastify__trackProgress linear 1 forwards;
+}
+.Toastify__progress-bar--controlled {
+  transition: transform 0.2s;
+}
+.Toastify__progress-bar--rtl {
+  right: 0;
+  left: initial;
+  transform-origin: right;
+  border-bottom-left-radius: initial;
+  border-bottom-right-radius: var(--toastify-toast-bd-radius);
+}
+.Toastify__progress-bar--wrp {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  border-bottom-left-radius: var(--toastify-toast-bd-radius);
+}
+.Toastify__progress-bar--wrp[data-hidden=true] {
+  opacity: 0;
+}
+.Toastify__progress-bar--bg {
+  opacity: var(--toastify-color-progress-bgo);
+  width: 100%;
+  height: 100%;
+}
+
+.Toastify__spinner {
+  width: 20px;
+  height: 20px;
+  box-sizing: border-box;
+  border: 2px solid;
+  border-radius: 100%;
+  border-color: var(--toastify-spinner-color-empty-area);
+  border-right-color: var(--toastify-spinner-color);
+  animation: Toastify__spin 0.65s linear infinite;
+}
+
+@keyframes Toastify__bounceInRight {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  from {
+    opacity: 0;
+    transform: translate3d(3000px, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(-25px, 0, 0);
+  }
+  75% {
+    transform: translate3d(10px, 0, 0);
+  }
+  90% {
+    transform: translate3d(-5px, 0, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes Toastify__bounceOutRight {
+  20% {
+    opacity: 1;
+    transform: translate3d(-20px, var(--y), 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(2000px, var(--y), 0);
+  }
+}
+@keyframes Toastify__bounceInLeft {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    opacity: 0;
+    transform: translate3d(-3000px, 0, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(25px, 0, 0);
+  }
+  75% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  90% {
+    transform: translate3d(5px, 0, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes Toastify__bounceOutLeft {
+  20% {
+    opacity: 1;
+    transform: translate3d(20px, var(--y), 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(-2000px, var(--y), 0);
+  }
+}
+@keyframes Toastify__bounceInUp {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  from {
+    opacity: 0;
+    transform: translate3d(0, 3000px, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, -20px, 0);
+  }
+  75% {
+    transform: translate3d(0, 10px, 0);
+  }
+  90% {
+    transform: translate3d(0, -5px, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes Toastify__bounceOutUp {
+  20% {
+    transform: translate3d(0, calc(var(--y) - 10px), 0);
+  }
+  40%, 45% {
+    opacity: 1;
+    transform: translate3d(0, calc(var(--y) + 20px), 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -2000px, 0);
+  }
+}
+@keyframes Toastify__bounceInDown {
+  from, 60%, 75%, 90%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -3000px, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 25px, 0);
+  }
+  75% {
+    transform: translate3d(0, -10px, 0);
+  }
+  90% {
+    transform: translate3d(0, 5px, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes Toastify__bounceOutDown {
+  20% {
+    transform: translate3d(0, calc(var(--y) - 10px), 0);
+  }
+  40%, 45% {
+    opacity: 1;
+    transform: translate3d(0, calc(var(--y) + 20px), 0);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, 2000px, 0);
+  }
+}
+.Toastify__bounce-enter--top-left, .Toastify__bounce-enter--bottom-left {
+  animation-name: Toastify__bounceInLeft;
+}
+.Toastify__bounce-enter--top-right, .Toastify__bounce-enter--bottom-right {
+  animation-name: Toastify__bounceInRight;
+}
+.Toastify__bounce-enter--top-center {
+  animation-name: Toastify__bounceInDown;
+}
+.Toastify__bounce-enter--bottom-center {
+  animation-name: Toastify__bounceInUp;
+}
+
+.Toastify__bounce-exit--top-left, .Toastify__bounce-exit--bottom-left {
+  animation-name: Toastify__bounceOutLeft;
+}
+.Toastify__bounce-exit--top-right, .Toastify__bounce-exit--bottom-right {
+  animation-name: Toastify__bounceOutRight;
+}
+.Toastify__bounce-exit--top-center {
+  animation-name: Toastify__bounceOutUp;
+}
+.Toastify__bounce-exit--bottom-center {
+  animation-name: Toastify__bounceOutDown;
+}
+
+@keyframes Toastify__zoomIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes Toastify__zoomOut {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+    transform: translate3d(0, var(--y), 0) scale3d(0.3, 0.3, 0.3);
+  }
+  to {
+    opacity: 0;
+  }
+}
+.Toastify__zoom-enter {
+  animation-name: Toastify__zoomIn;
+}
+
+.Toastify__zoom-exit {
+  animation-name: Toastify__zoomOut;
+}
+
+@keyframes Toastify__flipIn {
+  from {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+  to {
+    transform: perspective(400px);
+  }
+}
+@keyframes Toastify__flipOut {
+  from {
+    transform: translate3d(0, var(--y), 0) perspective(400px);
+  }
+  30% {
+    transform: translate3d(0, var(--y), 0) perspective(400px) rotate3d(1, 0, 0, -20deg);
+    opacity: 1;
+  }
+  to {
+    transform: translate3d(0, var(--y), 0) perspective(400px) rotate3d(1, 0, 0, 90deg);
+    opacity: 0;
+  }
+}
+.Toastify__flip-enter {
+  animation-name: Toastify__flipIn;
+}
+
+.Toastify__flip-exit {
+  animation-name: Toastify__flipOut;
+}
+
+@keyframes Toastify__slideInRight {
+  from {
+    transform: translate3d(110%, 0, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, var(--y), 0);
+  }
+}
+@keyframes Toastify__slideInLeft {
+  from {
+    transform: translate3d(-110%, 0, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, var(--y), 0);
+  }
+}
+@keyframes Toastify__slideInUp {
+  from {
+    transform: translate3d(0, 110%, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, var(--y), 0);
+  }
+}
+@keyframes Toastify__slideInDown {
+  from {
+    transform: translate3d(0, -110%, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, var(--y), 0);
+  }
+}
+@keyframes Toastify__slideOutRight {
+  from {
+    transform: translate3d(0, var(--y), 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(110%, var(--y), 0);
+  }
+}
+@keyframes Toastify__slideOutLeft {
+  from {
+    transform: translate3d(0, var(--y), 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(-110%, var(--y), 0);
+  }
+}
+@keyframes Toastify__slideOutDown {
+  from {
+    transform: translate3d(0, var(--y), 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(0, 500px, 0);
+  }
+}
+@keyframes Toastify__slideOutUp {
+  from {
+    transform: translate3d(0, var(--y), 0);
+  }
+  to {
+    visibility: hidden;
+    transform: translate3d(0, -500px, 0);
+  }
+}
+.Toastify__slide-enter--top-left, .Toastify__slide-enter--bottom-left {
+  animation-name: Toastify__slideInLeft;
+}
+.Toastify__slide-enter--top-right, .Toastify__slide-enter--bottom-right {
+  animation-name: Toastify__slideInRight;
+}
+.Toastify__slide-enter--top-center {
+  animation-name: Toastify__slideInDown;
+}
+.Toastify__slide-enter--bottom-center {
+  animation-name: Toastify__slideInUp;
+}
+
+.Toastify__slide-exit--top-left, .Toastify__slide-exit--bottom-left {
+  animation-name: Toastify__slideOutLeft;
+  animation-timing-function: ease-in;
+  animation-duration: 0.3s;
+}
+.Toastify__slide-exit--top-right, .Toastify__slide-exit--bottom-right {
+  animation-name: Toastify__slideOutRight;
+  animation-timing-function: ease-in;
+  animation-duration: 0.3s;
+}
+.Toastify__slide-exit--top-center {
+  animation-name: Toastify__slideOutUp;
+  animation-timing-function: ease-in;
+  animation-duration: 0.3s;
+}
+.Toastify__slide-exit--bottom-center {
+  animation-name: Toastify__slideOutDown;
+  animation-timing-function: ease-in;
+  animation-duration: 0.3s;
+}
+
+@keyframes Toastify__spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+                                             </style><style type="text/css" data-vite-dev-id="C:/Users/Admin/tai lieu/Máy tính/FE_voice_Prod/FE_voice_prod/src/index.css">
+</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill{from{display:block;}}</style><style data-emotion="css-global" data-s="">@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css-global" data-s="">@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css" data-s="">.css-1u1hos9{background-color:#f8fafc;min-height:100vh;}</style><style data-emotion="css" data-s="">.css-2pa33l{position:-webkit-sticky;position:sticky;top:0;left:0;width:100%;height:65px;background:rgb(252 253 254);z-index:100;}</style><style data-emotion="css" data-s="">.css-ymkwy7{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-top:5px;padding-bottom:5px;}</style><style data-emotion="css" data-s="">@media (min-width:0px){.css-ymkwy7{width:90%;padding-left:5%;padding-right:5%;}}</style><style data-emotion="css" data-s="">@media (min-width:960px){.css-ymkwy7{width:80%;padding-left:10%;padding-right:10%;}}</style><style data-emotion="css" data-s="">.css-1h2sv0j{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:10px;}</style><style data-emotion="css" data-s="">.css-0{}</style><style data-emotion="css" data-s="">.css-17pkplr{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:40px;cursor:pointer;}</style><style data-emotion="css" data-s="">.css-17ubrvk-MuiPopover-root{}</style><style data-emotion="css" data-s="">.css-sln0a8-MuiButton-root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:500;font-size:0.875rem;line-height:1.75;text-transform:uppercase;min-width:64px;padding:6px 16px;border:0;border-radius:8px;-webkit-transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;color:var(--variant-containedColor);background-color:var(--variant-containedBg);box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);--variant-textColor:#1976d2;--variant-outlinedColor:#1976d2;--variant-outlinedBorder:rgba(25, 118, 210, 0.5);--variant-containedColor:#fff;--variant-containedBg:#1976d2;border-radius:20px;text-transform:none;background:rgb(5 122 85);}</style><style data-emotion="css" data-s="">.css-sln0a8-MuiButton-root:hover{-webkit-text-decoration:none;text-decoration:none;}</style><style data-emotion="css" data-s="">.css-sln0a8-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-sln0a8-MuiButton-root:hover{box-shadow:0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-sln0a8-MuiButton-root:hover{box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);}}</style><style data-emotion="css" data-s="">.css-sln0a8-MuiButton-root:active{box-shadow:0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-sln0a8-MuiButton-root.Mui-focusVisible{box-shadow:0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-sln0a8-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);box-shadow:none;background-color:rgba(0, 0, 0, 0.12);}</style><style data-emotion="css" data-s="">@media (hover: hover){.css-sln0a8-MuiButton-root:hover{--variant-containedBg:rgb(17, 82, 147);--variant-textBg:rgba(25, 118, 210, 0.04);--variant-outlinedBorder:#1976d2;--variant-outlinedBg:rgba(25, 118, 210, 0.04);}}</style><style data-emotion="css" data-s="">@media (min-width:0px){.css-sln0a8-MuiButton-root{font-size:10px;min-width:87px;padding:6px 8px;}}</style><style data-emotion="css" data-s="">@media (min-width:960px){.css-sln0a8-MuiButton-root{font-size:15px;min-width:64px;padding:6px 16px;}}</style><style data-emotion="css" data-s="">.css-1rmfeue-MuiButtonBase-root-MuiButton-root{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:500;font-size:0.875rem;line-height:1.75;text-transform:uppercase;min-width:64px;padding:6px 16px;border:0;border-radius:8px;-webkit-transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;color:var(--variant-containedColor);background-color:var(--variant-containedBg);box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);--variant-textColor:#1976d2;--variant-outlinedColor:#1976d2;--variant-outlinedBorder:rgba(25, 118, 210, 0.5);--variant-containedColor:#fff;--variant-containedBg:#1976d2;border-radius:20px;text-transform:none;background:rgb(5 122 85);}</style><style data-emotion="css" data-s="">.css-1rmfeue-MuiButtonBase-root-MuiButton-root::-moz-focus-inner{border-style:none;}</style><style data-emotion="css" data-s="">.css-1rmfeue-MuiButtonBase-root-MuiButton-root.Mui-disabled{pointer-events:none;cursor:default;}</style><style data-emotion="css" data-s="">@media print{.css-1rmfeue-MuiButtonBase-root-MuiButton-root{-webkit-print-color-adjust:exact;color-adjust:exact;}}</style><style data-emotion="css" data-s="">.css-1rmfeue-MuiButtonBase-root-MuiButton-root:hover{-webkit-text-decoration:none;text-decoration:none;}</style><style data-emotion="css" data-s="">.css-1rmfeue-MuiButtonBase-root-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-1rmfeue-MuiButtonBase-root-MuiButton-root:hover{box-shadow:0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-1rmfeue-MuiButtonBase-root-MuiButton-root:hover{box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);}}</style><style data-emotion="css" data-s="">.css-1rmfeue-MuiButtonBase-root-MuiButton-root:active{box-shadow:0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-1rmfeue-MuiButtonBase-root-MuiButton-root.Mui-focusVisible{box-shadow:0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-1rmfeue-MuiButtonBase-root-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);box-shadow:none;background-color:rgba(0, 0, 0, 0.12);}</style><style data-emotion="css" data-s="">@media (hover: hover){.css-1rmfeue-MuiButtonBase-root-MuiButton-root:hover{--variant-containedBg:rgb(17, 82, 147);--variant-textBg:rgba(25, 118, 210, 0.04);--variant-outlinedBorder:#1976d2;--variant-outlinedBg:rgba(25, 118, 210, 0.04);}}</style><style data-emotion="css" data-s="">@media (min-width:0px){.css-1rmfeue-MuiButtonBase-root-MuiButton-root{font-size:10px;min-width:87px;padding:6px 8px;}}</style><style data-emotion="css" data-s="">@media (min-width:960px){.css-1rmfeue-MuiButtonBase-root-MuiButton-root{font-size:15px;min-width:64px;padding:6px 16px;}}</style><style data-emotion="css" data-s="">.css-1vk8yuc-MuiButton-endIcon{display:inherit;margin-right:-4px;margin-left:8px;}</style><style data-emotion="css" data-s="">.css-1vk8yuc-MuiButton-endIcon>*:nth-of-type(1){font-size:20px;}</style><style data-emotion="css" data-s="">.css-1qdt6xk-MuiSvgIcon-root{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;fill:currentColor;font-size:1.5rem;}</style><style data-emotion="css" data-s="">@media (min-width:0px){.css-1qdt6xk-MuiSvgIcon-root{font-size:15px!important;}}</style><style data-emotion="css" data-s="">@media (min-width:960px){.css-1qdt6xk-MuiSvgIcon-root{font-size:25px;}}</style><style data-emotion="css" data-s="">.css-m24e0b-MuiDrawer-root{z-index:1200;}</style><style data-emotion="css" data-s="">.css-rmu76h{margin-top:20px;}</style><style data-emotion="css" data-s="">@media (min-width:0px){.css-rmu76h{padding-left:2%;padding-right:2%;}}</style><style data-emotion="css" data-s="">@media (min-width:960px){.css-rmu76h{padding-left:11%;padding-right:11%;}}</style><style data-emotion="css" data-s="">.css-gg4vpm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;}</style><style data-emotion="css" data-s="">.css-1ug7zcj{width:47%;background:white;border-radius:5px;padding:30px;height:72vh;overflow-y:scroll;}</style><style data-emotion="css" data-s="">.css-ho93d2-MuiTypography-root{margin:0;font-size:1rem;line-height:1.5;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:400;margin-bottom:10px;font-weight:500;}</style><style data-emotion="css" data-s="">.css-w2hm5q{position:relative;}</style><style data-emotion="css" data-s="">.css-w2hm5q .css-gspymc-MuiInputBase-root-MuiOutlinedInput-root{padding-right:0px;}</style><style data-emotion="css" data-s="">.css-w2hm5q .material-video div{padding:3px 3px 3px 10px;}</style><style data-emotion="css" data-s="">.css-m5o9nn-MuiTextField-root{width:100%;font-size:16px;}</style><style data-emotion="css" data-s="">.css-m5o9nn-MuiTextField-root .MuiOutlinedInput-root{border-radius:8px;background-color:white;}</style><style data-emotion="css" data-s="">.css-m5o9nn-MuiTextField-root .MuiOutlinedInput-root fieldset{border-color:rgb(100,116,139);}</style><style data-emotion="css" data-s="">.css-m5o9nn-MuiTextField-root .MuiOutlinedInput-root:hover fieldset{border-color:unset;}</style><style data-emotion="css" data-s="">.css-m5o9nn-MuiTextField-root .MuiOutlinedInput-root.Mui-focused fieldset{border-color:rgb(5 122 85);}</style><style data-emotion="css" data-s="">.css-z6u04c-MuiFormControl-root-MuiTextField-root{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;position:relative;min-width:0;padding:0;margin:0;border:0;vertical-align:top;width:100%;font-size:16px;}</style><style data-emotion="css" data-s="">.css-z6u04c-MuiFormControl-root-MuiTextField-root .MuiOutlinedInput-root{border-radius:8px;background-color:white;}</style><style data-emotion="css" data-s="">.css-z6u04c-MuiFormControl-root-MuiTextField-root .MuiOutlinedInput-root fieldset{border-color:rgb(100,116,139);}</style><style data-emotion="css" data-s="">.css-z6u04c-MuiFormControl-root-MuiTextField-root .MuiOutlinedInput-root:hover fieldset{border-color:unset;}</style><style data-emotion="css" data-s="">.css-z6u04c-MuiFormControl-root-MuiTextField-root .MuiOutlinedInput-root.Mui-focused fieldset{border-color:rgb(5 122 85);}</style><style data-emotion="css" data-s="">.css-cxhsvb-MuiInputBase-root-MuiOutlinedInput-root{font-size:1rem;line-height:1.4375em;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:400;color:rgba(0, 0, 0, 0.87);box-sizing:border-box;position:relative;cursor:text;display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;border-radius:8px;padding-left:14px;padding-right:14px;}</style><style data-emotion="css" data-s="">.css-cxhsvb-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled{color:rgba(0, 0, 0, 0.38);cursor:default;}</style><style data-emotion="css" data-s="">.css-cxhsvb-MuiInputBase-root-MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.87);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-cxhsvb-MuiInputBase-root-MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.23);}}</style><style data-emotion="css" data-s="">.css-cxhsvb-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{border-width:2px;}</style><style data-emotion="css" data-s="">.css-cxhsvb-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{border-color:#1976d2;}</style><style data-emotion="css" data-s="">.css-cxhsvb-MuiInputBase-root-MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline{border-color:#f44336;}</style><style data-emotion="css" data-s="">.css-cxhsvb-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input{font:inherit;letter-spacing:inherit;color:currentColor;padding:4px 0 5px;border:0;box-sizing:content-box;background:none;height:1.4375em;margin:0;-webkit-tap-highlight-color:transparent;display:block;min-width:0;width:100%;-webkit-animation-name:mui-auto-fill-cancel;animation-name:mui-auto-fill-cancel;-webkit-animation-duration:10ms;animation-duration:10ms;padding-top:1px;padding:16.5px 14px;padding:8.5px 14px;padding-left:0;padding-right:0;}</style><style data-emotion="css" data-s="">.css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input::-webkit-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}</style><style data-emotion="css" data-s="">.css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input::-moz-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}</style><style data-emotion="css" data-s="">.css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input::-ms-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}</style><style data-emotion="css" data-s="">.css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input:focus{outline:0;}</style><style data-emotion="css" data-s="">.css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input:invalid{box-shadow:none;}</style><style data-emotion="css" data-s="">.css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input::-webkit-search-decoration{-webkit-appearance:none;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input{}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input::-webkit-input-placeholder{opacity:0!important;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input::-moz-placeholder{opacity:0!important;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input::-ms-input-placeholder{opacity:0!important;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input:focus::-webkit-input-placeholder{opacity:0.42;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input:focus::-moz-placeholder{opacity:0.42;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input:focus::-ms-input-placeholder{opacity:0.42;}</style><style data-emotion="css" data-s="">.css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled{opacity:1;-webkit-text-fill-color:rgba(0, 0, 0, 0.38);}</style><style data-emotion="css" data-s="">.css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill{-webkit-animation-duration:5000s;animation-duration:5000s;-webkit-animation-name:mui-auto-fill;animation-name:mui-auto-fill;}</style><style data-emotion="css" data-s="">.css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill{border-radius:inherit;}</style><style data-emotion="css" data-s="">.css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill WebkitBoxShadow{}</style><style data-emotion="css" data-s="">.css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill WebkitTextFillColor{}</style><style data-emotion="css" data-s="">.css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill caretColor{}</style><style data-emotion="css" data-s="">.css-n5rlmq-MuiButton-root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:500;font-size:0.875rem;line-height:1.75;text-transform:uppercase;min-width:64px;padding:6px 16px;border:0;border-radius:8px;-webkit-transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;color:var(--variant-containedColor);background-color:var(--variant-containedBg);box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);--variant-textColor:#1976d2;--variant-outlinedColor:#1976d2;--variant-outlinedBorder:rgba(25, 118, 210, 0.5);--variant-containedColor:#fff;--variant-containedBg:#1976d2;border-radius:20px;text-transform:none;width:200px;background:rgb(5 122 85);border-radius:8px;}</style><style data-emotion="css" data-s="">.css-n5rlmq-MuiButton-root:hover{-webkit-text-decoration:none;text-decoration:none;}</style><style data-emotion="css" data-s="">.css-n5rlmq-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-n5rlmq-MuiButton-root:hover{box-shadow:0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-n5rlmq-MuiButton-root:hover{box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);}}</style><style data-emotion="css" data-s="">.css-n5rlmq-MuiButton-root:active{box-shadow:0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-n5rlmq-MuiButton-root.Mui-focusVisible{box-shadow:0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-n5rlmq-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);box-shadow:none;background-color:rgba(0, 0, 0, 0.12);}</style><style data-emotion="css" data-s="">@media (hover: hover){.css-n5rlmq-MuiButton-root:hover{--variant-containedBg:rgb(17, 82, 147);--variant-textBg:rgba(25, 118, 210, 0.04);--variant-outlinedBorder:#1976d2;--variant-outlinedBg:rgba(25, 118, 210, 0.04);}}</style><style data-emotion="css" data-s="">@media (min-width:0px){.css-n5rlmq-MuiButton-root{font-size:10px;}}</style><style data-emotion="css" data-s="">@media (min-width:960px){.css-n5rlmq-MuiButton-root{font-size:15px;}}</style><style data-emotion="css" data-s="">.css-1yxcj1e-MuiButtonBase-root-MuiButton-root{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:500;font-size:0.875rem;line-height:1.75;text-transform:uppercase;min-width:64px;padding:6px 16px;border:0;border-radius:8px;-webkit-transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;color:var(--variant-containedColor);background-color:var(--variant-containedBg);box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);--variant-textColor:#1976d2;--variant-outlinedColor:#1976d2;--variant-outlinedBorder:rgba(25, 118, 210, 0.5);--variant-containedColor:#fff;--variant-containedBg:#1976d2;border-radius:20px;text-transform:none;width:200px;background:rgb(5 122 85);border-radius:8px;}</style><style data-emotion="css" data-s="">.css-1yxcj1e-MuiButtonBase-root-MuiButton-root::-moz-focus-inner{border-style:none;}</style><style data-emotion="css" data-s="">.css-1yxcj1e-MuiButtonBase-root-MuiButton-root.Mui-disabled{pointer-events:none;cursor:default;}</style><style data-emotion="css" data-s="">@media print{.css-1yxcj1e-MuiButtonBase-root-MuiButton-root{-webkit-print-color-adjust:exact;color-adjust:exact;}}</style><style data-emotion="css" data-s="">.css-1yxcj1e-MuiButtonBase-root-MuiButton-root:hover{-webkit-text-decoration:none;text-decoration:none;}</style><style data-emotion="css" data-s="">.css-1yxcj1e-MuiButtonBase-root-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-1yxcj1e-MuiButtonBase-root-MuiButton-root:hover{box-shadow:0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-1yxcj1e-MuiButtonBase-root-MuiButton-root:hover{box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);}}</style><style data-emotion="css" data-s="">.css-1yxcj1e-MuiButtonBase-root-MuiButton-root:active{box-shadow:0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-1yxcj1e-MuiButtonBase-root-MuiButton-root.Mui-focusVisible{box-shadow:0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-1yxcj1e-MuiButtonBase-root-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);box-shadow:none;background-color:rgba(0, 0, 0, 0.12);}</style><style data-emotion="css" data-s="">@media (hover: hover){.css-1yxcj1e-MuiButtonBase-root-MuiButton-root:hover{--variant-containedBg:rgb(17, 82, 147);--variant-textBg:rgba(25, 118, 210, 0.04);--variant-outlinedBorder:#1976d2;--variant-outlinedBg:rgba(25, 118, 210, 0.04);}}</style><style data-emotion="css" data-s="">@media (min-width:0px){.css-1yxcj1e-MuiButtonBase-root-MuiButton-root{font-size:10px;}}</style><style data-emotion="css" data-s="">@media (min-width:960px){.css-1yxcj1e-MuiButtonBase-root-MuiButton-root{font-size:15px;}}</style><style data-emotion="css" data-s="">.css-83yv08-MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.23);}</style><style data-emotion="css" data-s="">.css-1ll44ll-MuiOutlinedInput-notchedOutline{text-align:left;position:absolute;bottom:0;right:0;top:-5px;left:0;margin:0;padding:0 8px;pointer-events:none;border-radius:inherit;border-style:solid;border-width:1px;overflow:hidden;min-width:0%;border-color:rgba(0, 0, 0, 0.23);}</style><style data-emotion="css" data-s="">.css-w4cd9x{float:unset;width:auto;overflow:hidden;padding:0;line-height:11px;-webkit-transition:width 150ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;transition:width 150ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;}</style><style data-emotion="css" data-s="">.css-1xaekgw{margin-top:20px;}</style><style data-emotion="css" data-s="">.css-1sazv7p-MuiStack-root{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}</style><style data-emotion="css" data-s="">.css-1sazv7p-MuiStack-root>:not(style):not(style){margin:0;}</style><style data-emotion="css" data-s="">.css-1sazv7p-MuiStack-root>:not(style)~:not(style){margin-top:16px;}</style><style data-emotion="css" data-s="">.css-60iay8-MuiPaper-root{background-color:#ffffff;color:rgba(0, 0, 0, 0.87);-webkit-transition:box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;border-radius:8px;border:1px solid rgba(0, 0, 0, 0.12);padding:16px;background-color:#ffffff;padding:16px;position:relative;}</style><style data-emotion="css" data-s="">.css-60iay8-MuiPaper-root .css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input{padding:10px;}</style><style data-emotion="css" data-s="">.css-60iay8-MuiPaper-root .css-4kxyot-MuiInputBase-root-MuiOutlinedInput-root{padding:10px;}</style><style data-emotion="css" data-s="">.css-95okd6-MuiTypography-root{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:500;font-size:0.875rem;line-height:1.57;margin-bottom:0.35em;}</style><style data-emotion="css" data-s="">.css-pl8gqh-MuiStack-root{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}</style><style data-emotion="css" data-s="">.css-pl8gqh-MuiStack-root>:not(style):not(style){margin:0;}</style><style data-emotion="css" data-s="">.css-pl8gqh-MuiStack-root>:not(style)~:not(style){margin-left:16px;}</style><style data-emotion="css" data-s="">.css-1el8gol-MuiTextField-root{}</style><style data-emotion="css" data-s="">.css-cmpglg-MuiFormControl-root-MuiTextField-root{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;position:relative;min-width:0;padding:0;margin:0;border:0;vertical-align:top;width:100%;}</style><style data-emotion="css" data-s="">.css-1p53h51-MuiInputLabel-root{display:block;transform-origin:top left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;position:absolute;left:0;top:0;-webkit-transform:translate(0, 20px) scale(1);-moz-transform:translate(0, 20px) scale(1);-ms-transform:translate(0, 20px) scale(1);transform:translate(0, 20px) scale(1);-webkit-transform:translate(0, -1.5px) scale(0.75);-moz-transform:translate(0, -1.5px) scale(0.75);-ms-transform:translate(0, -1.5px) scale(0.75);transform:translate(0, -1.5px) scale(0.75);transform-origin:top left;max-width:133%;-webkit-transition:color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;transition:color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;z-index:1;pointer-events:none;-webkit-transform:translate(14px, 16px) scale(1);-moz-transform:translate(14px, 16px) scale(1);-ms-transform:translate(14px, 16px) scale(1);transform:translate(14px, 16px) scale(1);max-width:calc(100% - 24px);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:auto;max-width:calc(133% - 32px);-webkit-transform:translate(14px, -9px) scale(0.75);-moz-transform:translate(14px, -9px) scale(0.75);-ms-transform:translate(14px, -9px) scale(0.75);transform:translate(14px, -9px) scale(0.75);}</style><style data-emotion="css" data-s="">.css-1fj8q0k-MuiFormLabel-root-MuiInputLabel-root{color:rgba(0, 0, 0, 0.6);font-size:1rem;line-height:1.4375em;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:400;padding:0;position:relative;display:block;transform-origin:top left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;position:absolute;left:0;top:0;-webkit-transform:translate(0, 20px) scale(1);-moz-transform:translate(0, 20px) scale(1);-ms-transform:translate(0, 20px) scale(1);transform:translate(0, 20px) scale(1);-webkit-transform:translate(0, -1.5px) scale(0.75);-moz-transform:translate(0, -1.5px) scale(0.75);-ms-transform:translate(0, -1.5px) scale(0.75);transform:translate(0, -1.5px) scale(0.75);transform-origin:top left;max-width:133%;-webkit-transition:color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;transition:color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;z-index:1;pointer-events:none;-webkit-transform:translate(14px, 16px) scale(1);-moz-transform:translate(14px, 16px) scale(1);-ms-transform:translate(14px, 16px) scale(1);transform:translate(14px, 16px) scale(1);max-width:calc(100% - 24px);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:auto;max-width:calc(133% - 32px);-webkit-transform:translate(14px, -9px) scale(0.75);-moz-transform:translate(14px, -9px) scale(0.75);-ms-transform:translate(14px, -9px) scale(0.75);transform:translate(14px, -9px) scale(0.75);}</style><style data-emotion="css" data-s="">.css-1fj8q0k-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{color:#1976d2;}</style><style data-emotion="css" data-s="">.css-1fj8q0k-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled{color:rgba(0, 0, 0, 0.38);}</style><style data-emotion="css" data-s="">.css-1fj8q0k-MuiFormLabel-root-MuiInputLabel-root.Mui-error{color:#f44336;}</style><style data-emotion="css" data-s="">.css-1o9i655-MuiInputBase-root-MuiOutlinedInput-root{font-size:1rem;line-height:1.4375em;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:400;color:rgba(0, 0, 0, 0.87);box-sizing:border-box;position:relative;cursor:text;display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:100%;position:relative;border-radius:8px;}</style><style data-emotion="css" data-s="">.css-1o9i655-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled{color:rgba(0, 0, 0, 0.38);cursor:default;}</style><style data-emotion="css" data-s="">.css-1o9i655-MuiInputBase-root-MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.87);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-1o9i655-MuiInputBase-root-MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.23);}}</style><style data-emotion="css" data-s="">.css-1o9i655-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{border-width:2px;}</style><style data-emotion="css" data-s="">.css-1o9i655-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{border-color:#1976d2;}</style><style data-emotion="css" data-s="">.css-1o9i655-MuiInputBase-root-MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline{border-color:#f44336;}</style><style data-emotion="css" data-s="">.css-1o9i655-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input{font:inherit;letter-spacing:inherit;color:currentColor;padding:4px 0 5px;border:0;box-sizing:content-box;background:none;height:1.4375em;margin:0;-webkit-tap-highlight-color:transparent;display:block;min-width:0;width:100%;-webkit-animation-name:mui-auto-fill-cancel;animation-name:mui-auto-fill-cancel;-webkit-animation-duration:10ms;animation-duration:10ms;padding:16.5px 14px;}</style><style data-emotion="css" data-s="">.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input::-webkit-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}</style><style data-emotion="css" data-s="">.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input::-moz-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}</style><style data-emotion="css" data-s="">.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input::-ms-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}</style><style data-emotion="css" data-s="">.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:focus{outline:0;}</style><style data-emotion="css" data-s="">.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:invalid{box-shadow:none;}</style><style data-emotion="css" data-s="">.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input::-webkit-search-decoration{-webkit-appearance:none;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input{}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input::-webkit-input-placeholder{opacity:0!important;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input::-moz-placeholder{opacity:0!important;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input::-ms-input-placeholder{opacity:0!important;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:focus::-webkit-input-placeholder{opacity:0.42;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:focus::-moz-placeholder{opacity:0.42;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:focus::-ms-input-placeholder{opacity:0.42;}</style><style data-emotion="css" data-s="">.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled{opacity:1;-webkit-text-fill-color:rgba(0, 0, 0, 0.38);}</style><style data-emotion="css" data-s="">.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill{-webkit-animation-duration:5000s;animation-duration:5000s;-webkit-animation-name:mui-auto-fill;animation-name:mui-auto-fill;}</style><style data-emotion="css" data-s="">.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill{border-radius:inherit;}</style><style data-emotion="css" data-s="">.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill WebkitBoxShadow{}</style><style data-emotion="css" data-s="">.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill WebkitTextFillColor{}</style><style data-emotion="css" data-s="">.css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill caretColor{}</style><style data-emotion="css" data-s="">.css-w1u3ce{float:unset;width:auto;overflow:hidden;display:block;padding:0;height:11px;font-size:0.75em;visibility:hidden;max-width:0.01px;-webkit-transition:max-width 50ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;transition:max-width 50ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;white-space:nowrap;max-width:100%;-webkit-transition:max-width 100ms cubic-bezier(0.0, 0, 0.2, 1) 50ms;transition:max-width 100ms cubic-bezier(0.0, 0, 0.2, 1) 50ms;}</style><style data-emotion="css" data-s="">.css-w1u3ce>span{padding-left:5px;padding-right:5px;display:inline-block;opacity:0;visibility:visible;}</style><style data-emotion="css" data-s="">.css-16bevx5-MuiFormControl-root-MuiTextField-root{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;position:relative;min-width:0;padding:0;margin:0;border:0;vertical-align:top;margin-top:16px;margin-bottom:8px;width:100%;}</style><style data-emotion="css" data-s="">.css-4kxyot-MuiInputBase-root-MuiOutlinedInput-root{font-size:1rem;line-height:1.4375em;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:400;color:rgba(0, 0, 0, 0.87);box-sizing:border-box;position:relative;cursor:text;display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:4px 0 5px;width:100%;position:relative;border-radius:8px;padding:16.5px 14px;}</style><style data-emotion="css" data-s="">.css-4kxyot-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled{color:rgba(0, 0, 0, 0.38);cursor:default;}</style><style data-emotion="css" data-s="">.css-4kxyot-MuiInputBase-root-MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.87);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-4kxyot-MuiInputBase-root-MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.23);}}</style><style data-emotion="css" data-s="">.css-4kxyot-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{border-width:2px;}</style><style data-emotion="css" data-s="">.css-4kxyot-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline{border-color:#1976d2;}</style><style data-emotion="css" data-s="">.css-4kxyot-MuiInputBase-root-MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline{border-color:#f44336;}</style><style data-emotion="css" data-s="">.css-4kxyot-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input{font:inherit;letter-spacing:inherit;color:currentColor;padding:4px 0 5px;border:0;box-sizing:content-box;background:none;height:1.4375em;margin:0;-webkit-tap-highlight-color:transparent;display:block;min-width:0;width:100%;-webkit-animation-name:mui-auto-fill-cancel;animation-name:mui-auto-fill-cancel;-webkit-animation-duration:10ms;animation-duration:10ms;height:auto;resize:none;padding:0;padding-top:0;padding:16.5px 14px;padding:0;}</style><style data-emotion="css" data-s="">.css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input::-webkit-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}</style><style data-emotion="css" data-s="">.css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input::-moz-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}</style><style data-emotion="css" data-s="">.css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input::-ms-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}</style><style data-emotion="css" data-s="">.css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input:focus{outline:0;}</style><style data-emotion="css" data-s="">.css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input:invalid{box-shadow:none;}</style><style data-emotion="css" data-s="">.css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input::-webkit-search-decoration{-webkit-appearance:none;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input{}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input::-webkit-input-placeholder{opacity:0!important;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input::-moz-placeholder{opacity:0!important;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input::-ms-input-placeholder{opacity:0!important;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input:focus::-webkit-input-placeholder{opacity:0.42;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input:focus::-moz-placeholder{opacity:0.42;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input:focus::-ms-input-placeholder{opacity:0.42;}</style><style data-emotion="css" data-s="">.css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled{opacity:1;-webkit-text-fill-color:rgba(0, 0, 0, 0.38);}</style><style data-emotion="css" data-s="">.css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill{-webkit-animation-duration:5000s;animation-duration:5000s;-webkit-animation-name:mui-auto-fill;animation-name:mui-auto-fill;}</style><style data-emotion="css" data-s="">.css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill{border-radius:inherit;}</style><style data-emotion="css" data-s="">.css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill WebkitBoxShadow{}</style><style data-emotion="css" data-s="">.css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill WebkitTextFillColor{}</style><style data-emotion="css" data-s="">.css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill caretColor{}</style><style data-emotion="css" data-s="">.css-n0lc3s-MuiStack-root{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;position:absolute;top:8px;right:8px;}</style><style data-emotion="css" data-s="">.css-n0lc3s-MuiStack-root>:not(style):not(style){margin:0;}</style><style data-emotion="css" data-s="">.css-n0lc3s-MuiStack-root>:not(style)~:not(style){margin-left:8px;}</style><style data-emotion="css" data-s="">.css-1vdrcp1-MuiIconButton-root{text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;--IconButton-hoverBg:rgba(0, 0, 0, 0.04);padding:5px;font-size:1.125rem;}</style><style data-emotion="css" data-s="">.css-1vdrcp1-MuiIconButton-root:hover{background-color:var(--IconButton-hoverBg);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-1vdrcp1-MuiIconButton-root:hover{background-color:transparent;}}</style><style data-emotion="css" data-s="">.css-1vdrcp1-MuiIconButton-root.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-r363y4-MuiButtonBase-root-MuiIconButton-root{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;--IconButton-hoverBg:rgba(0, 0, 0, 0.04);padding:5px;font-size:1.125rem;}</style><style data-emotion="css" data-s="">.css-r363y4-MuiButtonBase-root-MuiIconButton-root::-moz-focus-inner{border-style:none;}</style><style data-emotion="css" data-s="">.css-r363y4-MuiButtonBase-root-MuiIconButton-root.Mui-disabled{pointer-events:none;cursor:default;}</style><style data-emotion="css" data-s="">@media print{.css-r363y4-MuiButtonBase-root-MuiIconButton-root{-webkit-print-color-adjust:exact;color-adjust:exact;}}</style><style data-emotion="css" data-s="">.css-r363y4-MuiButtonBase-root-MuiIconButton-root:hover{background-color:var(--IconButton-hoverBg);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-r363y4-MuiButtonBase-root-MuiIconButton-root:hover{background-color:transparent;}}</style><style data-emotion="css" data-s="">.css-r363y4-MuiButtonBase-root-MuiIconButton-root.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-1umw9bq-MuiSvgIcon-root{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;fill:currentColor;font-size:1.5rem;}</style><style data-emotion="css" data-s="">.css-1j433k-MuiIconButton-root{text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;--IconButton-hoverBg:rgba(0, 0, 0, 0.04);color:#f44336;--IconButton-hoverBg:rgba(244, 67, 54, 0.04);padding:5px;font-size:1.125rem;}</style><style data-emotion="css" data-s="">.css-1j433k-MuiIconButton-root:hover{background-color:var(--IconButton-hoverBg);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-1j433k-MuiIconButton-root:hover{background-color:transparent;}}</style><style data-emotion="css" data-s="">.css-1j433k-MuiIconButton-root.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-1kif9lf-MuiButtonBase-root-MuiIconButton-root{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;--IconButton-hoverBg:rgba(0, 0, 0, 0.04);color:#f44336;--IconButton-hoverBg:rgba(244, 67, 54, 0.04);padding:5px;font-size:1.125rem;}</style><style data-emotion="css" data-s="">.css-1kif9lf-MuiButtonBase-root-MuiIconButton-root::-moz-focus-inner{border-style:none;}</style><style data-emotion="css" data-s="">.css-1kif9lf-MuiButtonBase-root-MuiIconButton-root.Mui-disabled{pointer-events:none;cursor:default;}</style><style data-emotion="css" data-s="">@media print{.css-1kif9lf-MuiButtonBase-root-MuiIconButton-root{-webkit-print-color-adjust:exact;color-adjust:exact;}}</style><style data-emotion="css" data-s="">.css-1kif9lf-MuiButtonBase-root-MuiIconButton-root:hover{background-color:var(--IconButton-hoverBg);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-1kif9lf-MuiButtonBase-root-MuiIconButton-root:hover{background-color:transparent;}}</style><style data-emotion="css" data-s="">.css-1kif9lf-MuiButtonBase-root-MuiIconButton-root.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-6pwb0o-MuiButton-root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:500;font-size:0.875rem;line-height:1.75;text-transform:uppercase;min-width:64px;padding:6px 16px;border:0;border-radius:8px;-webkit-transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;color:var(--variant-containedColor);background-color:var(--variant-containedBg);box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);--variant-textColor:#1976d2;--variant-outlinedColor:#1976d2;--variant-outlinedBorder:rgba(25, 118, 210, 0.5);--variant-containedColor:#fff;--variant-containedBg:#1976d2;border-radius:20px;text-transform:none;margin-top:16px;background-color:rgb(5 122 85);border-radius:10px;}</style><style data-emotion="css" data-s="">.css-6pwb0o-MuiButton-root:hover{-webkit-text-decoration:none;text-decoration:none;}</style><style data-emotion="css" data-s="">.css-6pwb0o-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-6pwb0o-MuiButton-root:hover{box-shadow:0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-6pwb0o-MuiButton-root:hover{box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);}}</style><style data-emotion="css" data-s="">.css-6pwb0o-MuiButton-root:active{box-shadow:0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-6pwb0o-MuiButton-root.Mui-focusVisible{box-shadow:0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-6pwb0o-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);box-shadow:none;background-color:rgba(0, 0, 0, 0.12);}</style><style data-emotion="css" data-s="">@media (hover: hover){.css-6pwb0o-MuiButton-root:hover{--variant-containedBg:rgb(17, 82, 147);--variant-textBg:rgba(25, 118, 210, 0.04);--variant-outlinedBorder:#1976d2;--variant-outlinedBg:rgba(25, 118, 210, 0.04);}}</style><style data-emotion="css" data-s="">.css-17b2bma-MuiButtonBase-root-MuiButton-root{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:500;font-size:0.875rem;line-height:1.75;text-transform:uppercase;min-width:64px;padding:6px 16px;border:0;border-radius:8px;-webkit-transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;color:var(--variant-containedColor);background-color:var(--variant-containedBg);box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);--variant-textColor:#1976d2;--variant-outlinedColor:#1976d2;--variant-outlinedBorder:rgba(25, 118, 210, 0.5);--variant-containedColor:#fff;--variant-containedBg:#1976d2;border-radius:20px;text-transform:none;margin-top:16px;background-color:rgb(5 122 85);border-radius:10px;}</style><style data-emotion="css" data-s="">.css-17b2bma-MuiButtonBase-root-MuiButton-root::-moz-focus-inner{border-style:none;}</style><style data-emotion="css" data-s="">.css-17b2bma-MuiButtonBase-root-MuiButton-root.Mui-disabled{pointer-events:none;cursor:default;}</style><style data-emotion="css" data-s="">@media print{.css-17b2bma-MuiButtonBase-root-MuiButton-root{-webkit-print-color-adjust:exact;color-adjust:exact;}}</style><style data-emotion="css" data-s="">.css-17b2bma-MuiButtonBase-root-MuiButton-root:hover{-webkit-text-decoration:none;text-decoration:none;}</style><style data-emotion="css" data-s="">.css-17b2bma-MuiButtonBase-root-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-17b2bma-MuiButtonBase-root-MuiButton-root:hover{box-shadow:0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-17b2bma-MuiButtonBase-root-MuiButton-root:hover{box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);}}</style><style data-emotion="css" data-s="">.css-17b2bma-MuiButtonBase-root-MuiButton-root:active{box-shadow:0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-17b2bma-MuiButtonBase-root-MuiButton-root.Mui-focusVisible{box-shadow:0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-17b2bma-MuiButtonBase-root-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);box-shadow:none;background-color:rgba(0, 0, 0, 0.12);}</style><style data-emotion="css" data-s="">@media (hover: hover){.css-17b2bma-MuiButtonBase-root-MuiButton-root:hover{--variant-containedBg:rgb(17, 82, 147);--variant-textBg:rgba(25, 118, 210, 0.04);--variant-outlinedBorder:#1976d2;--variant-outlinedBg:rgba(25, 118, 210, 0.04);}}</style><style data-emotion="css" data-s="">.css-dm569u-MuiButton-startIcon{display:inherit;margin-right:8px;margin-left:-4px;}</style><style data-emotion="css" data-s="">.css-dm569u-MuiButton-startIcon>*:nth-of-type(1){font-size:20px;}</style><style data-emotion="css" data-s="">.css-1adb2pb{width:47%;background:white;border-radius:5px;padding:30px;}</style><style data-emotion="css" data-s="">.css-69i1ev{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}</style><style data-emotion="css" data-s="">.css-gfo1ug-MuiFormControl-root{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;position:relative;min-width:0;padding:0;margin:0;border:0;vertical-align:top;width:45%;}</style><style data-emotion="css" data-s="">.css-zah7b-MuiSelect-root{background:white;}</style><style data-emotion="css" data-s="">.css-zah7b-MuiSelect-root:focus{border-color:rgb(5 122 85);}</style><style data-emotion="css" data-s="">.css-zah7b-MuiSelect-root .MuiOutlinedInput-notchedOutline{border-color:gray;}</style><style data-emotion="css" data-s="">.css-zah7b-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline{border-color:rgb(5 122 85);}</style><style data-emotion="css" data-s="">.css-zah7b-MuiSelect-root .css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{padding:10px!important;}</style><style data-emotion="css" data-s="">.css-2ne59s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{font-size:1rem;line-height:1.4375em;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:400;color:rgba(0, 0, 0, 0.87);box-sizing:border-box;position:relative;cursor:text;display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;border-radius:8px;background:white;}</style><style data-emotion="css" data-s="">.css-2ne59s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-disabled{color:rgba(0, 0, 0, 0.38);cursor:default;}</style><style data-emotion="css" data-s="">.css-2ne59s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root:hover .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.87);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-2ne59s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root:hover .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.23);}}</style><style data-emotion="css" data-s="">.css-2ne59s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline{border-width:2px;}</style><style data-emotion="css" data-s="">.css-2ne59s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline{border-color:#1976d2;}</style><style data-emotion="css" data-s="">.css-2ne59s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-error .MuiOutlinedInput-notchedOutline{border-color:#f44336;}</style><style data-emotion="css" data-s="">.css-2ne59s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-disabled .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-2ne59s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root:focus{border-color:rgb(5 122 85);}</style><style data-emotion="css" data-s="">.css-2ne59s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root .MuiOutlinedInput-notchedOutline{border-color:gray;}</style><style data-emotion="css" data-s="">.css-2ne59s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline{border-color:rgb(5 122 85);}</style><style data-emotion="css" data-s="">.css-2ne59s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root .css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{padding:10px!important;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{-moz-appearance:none;-webkit-appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border-radius:0;cursor:pointer;border-radius:8px;font:inherit;letter-spacing:inherit;color:currentColor;padding:4px 0 5px;border:0;box-sizing:content-box;background:none;height:1.4375em;margin:0;-webkit-tap-highlight-color:transparent;display:block;min-width:0;width:100%;-webkit-animation-name:mui-auto-fill-cancel;animation-name:mui-auto-fill-cancel;-webkit-animation-duration:10ms;animation-duration:10ms;padding:16.5px 14px;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:focus{border-radius:0;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled{cursor:default;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input[multiple]{height:auto;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:not([multiple]) option,.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:not([multiple]) optgroup{background-color:#ffffff;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:focus{border-radius:8px;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{padding-right:32px;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.MuiSelect-select{height:auto;min-height:1.4375em;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input::-webkit-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input::-moz-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input::-ms-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:focus{outline:0;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:invalid{box-shadow:none;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input::-webkit-search-decoration{-webkit-appearance:none;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input::-webkit-input-placeholder{opacity:0!important;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input::-moz-placeholder{opacity:0!important;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input::-ms-input-placeholder{opacity:0!important;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:focus::-webkit-input-placeholder{opacity:0.42;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:focus::-moz-placeholder{opacity:0.42;}</style><style data-emotion="css" data-s="">label[data-shrink=false]+.MuiInputBase-formControl .css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:focus::-ms-input-placeholder{opacity:0.42;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.Mui-disabled{opacity:1;-webkit-text-fill-color:rgba(0, 0, 0, 0.38);}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill{-webkit-animation-duration:5000s;animation-duration:5000s;-webkit-animation-name:mui-auto-fill;animation-name:mui-auto-fill;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill{border-radius:inherit;}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill WebkitBoxShadow{}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill WebkitTextFillColor{}</style><style data-emotion="css" data-s="">.css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill caretColor{}</style><style data-emotion="css" data-s="">.css-j0riat-MuiSelect-nativeInput{bottom:0;left:0;position:absolute;opacity:0;pointer-events:none;width:100%;box-sizing:border-box;}</style><style data-emotion="css" data-s="">.css-siyuh6-MuiSelect-icon{position:absolute;right:0;top:calc(50% - .5em);pointer-events:none;color:rgba(0, 0, 0, 0.54);right:7px;}</style><style data-emotion="css" data-s="">.css-siyuh6-MuiSelect-icon.Mui-disabled{color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-lohd6h-MuiSvgIcon-root-MuiSelect-icon{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;fill:currentColor;font-size:1.5rem;position:absolute;right:0;top:calc(50% - .5em);pointer-events:none;color:rgba(0, 0, 0, 0.54);right:7px;}</style><style data-emotion="css" data-s="">.css-lohd6h-MuiSvgIcon-root-MuiSelect-icon.Mui-disabled{color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-s4soc1-MuiMenu-root{}</style><style data-emotion="css" data-s="">.css-1cft1g0-MuiPopover-root-MuiMenu-root{}</style><style data-emotion="css" data-s="">.css-qqxm8u-MuiSelect-root{background:white;}</style><style data-emotion="css" data-s="">.css-qqxm8u-MuiSelect-root:focus{border-color:rgb(5 122 85);}</style><style data-emotion="css" data-s="">.css-qqxm8u-MuiSelect-root .MuiOutlinedInput-notchedOutline{border-color:gray;}</style><style data-emotion="css" data-s="">.css-qqxm8u-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline{border-color:rgb(5 122 85);}</style><style data-emotion="css" data-s="">.css-mwwo2e-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{font-size:1rem;line-height:1.4375em;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:400;color:rgba(0, 0, 0, 0.87);box-sizing:border-box;position:relative;cursor:text;display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;border-radius:8px;background:white;}</style><style data-emotion="css" data-s="">.css-mwwo2e-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-disabled{color:rgba(0, 0, 0, 0.38);cursor:default;}</style><style data-emotion="css" data-s="">.css-mwwo2e-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root:hover .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.87);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-mwwo2e-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root:hover .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.23);}}</style><style data-emotion="css" data-s="">.css-mwwo2e-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline{border-width:2px;}</style><style data-emotion="css" data-s="">.css-mwwo2e-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline{border-color:#1976d2;}</style><style data-emotion="css" data-s="">.css-mwwo2e-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-error .MuiOutlinedInput-notchedOutline{border-color:#f44336;}</style><style data-emotion="css" data-s="">.css-mwwo2e-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-disabled .MuiOutlinedInput-notchedOutline{border-color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-mwwo2e-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root:focus{border-color:rgb(5 122 85);}</style><style data-emotion="css" data-s="">.css-mwwo2e-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root .MuiOutlinedInput-notchedOutline{border-color:gray;}</style><style data-emotion="css" data-s="">.css-mwwo2e-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root.Mui-focused .MuiOutlinedInput-notchedOutline{border-color:rgb(5 122 85);}</style><style data-emotion="css" data-s="">.css-12p8od-MuiTypography-root{margin:0;font-size:1rem;line-height:1.5;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:400;margin-top:10px;margin-bottom:10px;font-weight:500;width:45%;}</style><style data-emotion="css" data-s="">.css-1ttywp7{width:45%;}</style><style data-emotion="css" data-s="">.css-16dux7x-MuiButton-root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:500;font-size:0.875rem;line-height:1.75;text-transform:uppercase;min-width:64px;padding:6px 16px;border:0;border-radius:8px;-webkit-transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;padding:6px 8px;color:var(--variant-textColor);background-color:var(--variant-textBg);--variant-textColor:#1976d2;--variant-outlinedColor:#1976d2;--variant-outlinedBorder:rgba(25, 118, 210, 0.5);--variant-containedColor:#fff;--variant-containedBg:#1976d2;border-radius:20px;text-transform:none;width:100%;height:100%;border-radius:8px;color:black;border:1px solid #ccc;background:white;}</style><style data-emotion="css" data-s="">.css-16dux7x-MuiButton-root:hover{-webkit-text-decoration:none;text-decoration:none;}</style><style data-emotion="css" data-s="">.css-16dux7x-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">@media (hover: hover){.css-16dux7x-MuiButton-root:hover{--variant-containedBg:rgb(17, 82, 147);--variant-textBg:rgba(25, 118, 210, 0.04);--variant-outlinedBorder:#1976d2;--variant-outlinedBg:rgba(25, 118, 210, 0.04);}}</style><style data-emotion="css" data-s="">@media (min-width:0px){.css-16dux7x-MuiButton-root{font-size:10px;}}</style><style data-emotion="css" data-s="">@media (min-width:960px){.css-16dux7x-MuiButton-root{font-size:15px;}}</style><style data-emotion="css" data-s="">.css-1mkjir-MuiButtonBase-root-MuiButton-root{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:500;font-size:0.875rem;line-height:1.75;text-transform:uppercase;min-width:64px;padding:6px 16px;border:0;border-radius:8px;-webkit-transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;padding:6px 8px;color:var(--variant-textColor);background-color:var(--variant-textBg);--variant-textColor:#1976d2;--variant-outlinedColor:#1976d2;--variant-outlinedBorder:rgba(25, 118, 210, 0.5);--variant-containedColor:#fff;--variant-containedBg:#1976d2;border-radius:20px;text-transform:none;width:100%;height:100%;border-radius:8px;color:black;border:1px solid #ccc;background:white;}</style><style data-emotion="css" data-s="">.css-1mkjir-MuiButtonBase-root-MuiButton-root::-moz-focus-inner{border-style:none;}</style><style data-emotion="css" data-s="">.css-1mkjir-MuiButtonBase-root-MuiButton-root.Mui-disabled{pointer-events:none;cursor:default;}</style><style data-emotion="css" data-s="">@media print{.css-1mkjir-MuiButtonBase-root-MuiButton-root{-webkit-print-color-adjust:exact;color-adjust:exact;}}</style><style data-emotion="css" data-s="">.css-1mkjir-MuiButtonBase-root-MuiButton-root:hover{-webkit-text-decoration:none;text-decoration:none;}</style><style data-emotion="css" data-s="">.css-1mkjir-MuiButtonBase-root-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">@media (hover: hover){.css-1mkjir-MuiButtonBase-root-MuiButton-root:hover{--variant-containedBg:rgb(17, 82, 147);--variant-textBg:rgba(25, 118, 210, 0.04);--variant-outlinedBorder:#1976d2;--variant-outlinedBg:rgba(25, 118, 210, 0.04);}}</style><style data-emotion="css" data-s="">@media (min-width:0px){.css-1mkjir-MuiButtonBase-root-MuiButton-root{font-size:10px;}}</style><style data-emotion="css" data-s="">@media (min-width:960px){.css-1mkjir-MuiButtonBase-root-MuiButton-root{font-size:15px;}}</style><style data-emotion="css" data-s="">.css-sr5uyx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;margin-top:-30px;}</style><style data-emotion="css" data-s="">.css-lcoy4n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:end;-webkit-box-align:end;-ms-flex-align:end;align-items:end;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;}</style><style data-emotion="css" data-s="">.css-4dhbqd-MuiTypography-root{margin:0;font-size:1rem;line-height:1.5;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:400;font-size:14px;line-height:.8;}</style><style data-emotion="css" data-s="">.css-174rtei{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;-webkit-justify-content:end;justify-content:end;-webkit-align-items:flex-end;-webkit-box-align:flex-end;-ms-flex-align:flex-end;align-items:flex-end;height:40px;gap:2px;}</style><style data-emotion="css" data-s="">.css-1pwustz{width:10px;height:7px;background-color:rgb(5 122 85);-webkit-transition:all 0.2s ease;transition:all 0.2s ease;}</style><style data-emotion="css" data-s="">.css-16rvlqv{width:10px;height:7px;background-color:#ccc;-webkit-transition:all 0.2s ease;transition:all 0.2s ease;}</style><style data-emotion="css" data-s="">.css-sinkmu{color:rgb(5 122 85);height:10px;border-radius:5px;}</style><style data-emotion="css" data-s="">.css-sinkmu .MuiSlider-thumb{width:24px;height:24px;background-color:#fff;border:2px solid #aaa;}</style><style data-emotion="css" data-s="">.css-sinkmu .MuiSlider-track{border:none;}</style><style data-emotion="css" data-s="">.css-sinkmu .MuiSlider-rail{opacity:0.5;background-color:#ccc;}</style><style data-emotion="css" data-s="">.css-lwv7bf-MuiSlider-root{border-radius:12px;box-sizing:content-box;display:inline-block;position:relative;cursor:pointer;touch-action:none;-webkit-tap-highlight-color:transparent;color:#1976d2;height:4px;width:100%;padding:13px 0;color:rgb(5 122 85);height:10px;border-radius:5px;}</style><style data-emotion="css" data-s="">@media print{.css-lwv7bf-MuiSlider-root{-webkit-print-color-adjust:exact;color-adjust:exact;}}</style><style data-emotion="css" data-s="">.css-lwv7bf-MuiSlider-root.Mui-disabled{pointer-events:none;cursor:default;color:#bdbdbd;}</style><style data-emotion="css" data-s="">.css-lwv7bf-MuiSlider-root.MuiSlider-dragging{}</style><style data-emotion="css" data-s="">.css-lwv7bf-MuiSlider-root.MuiSlider-dragging .MuiSlider-thumb,.css-lwv7bf-MuiSlider-root.MuiSlider-dragging .MuiSlider-track{-webkit-transition:none;transition:none;}</style><style data-emotion="css" data-s="">@media (pointer: coarse){.css-lwv7bf-MuiSlider-root{padding:20px 0;}}</style><style data-emotion="css" data-s="">.css-lwv7bf-MuiSlider-root .MuiSlider-thumb{width:24px;height:24px;background-color:#fff;border:2px solid #aaa;}</style><style data-emotion="css" data-s="">.css-lwv7bf-MuiSlider-root .MuiSlider-track{border:none;}</style><style data-emotion="css" data-s="">.css-lwv7bf-MuiSlider-root .MuiSlider-rail{opacity:0.5;background-color:#ccc;}</style><style data-emotion="css" data-s="">.css-r64h58-MuiSlider-rail{display:block;position:absolute;border-radius:inherit;background-color:currentColor;opacity:0.38;width:100%;height:inherit;top:50%;-webkit-transform:translateY(-50%);-moz-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);}</style><style data-emotion="css" data-s="">.css-xvk2i-MuiSlider-track{display:block;position:absolute;border-radius:inherit;border:1px solid currentColor;background-color:currentColor;-webkit-transition:left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,width 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,bottom 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,height 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,width 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,bottom 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,height 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;height:inherit;top:50%;-webkit-transform:translateY(-50%);-moz-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%);}</style><style data-emotion="css" data-s="">.css-1xcmt9q-MuiSlider-thumb{position:absolute;width:20px;height:20px;box-sizing:border-box;border-radius:50%;outline:0;background-color:currentColor;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-transition:box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,bottom 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,bottom 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;top:50%;-webkit-transform:translate(-50%, -50%);-moz-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);transform:translate(-50%, -50%);}</style><style data-emotion="css" data-s="">.css-1xcmt9q-MuiSlider-thumb::before{position:absolute;content:"";border-radius:inherit;width:100%;height:100%;box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-1xcmt9q-MuiSlider-thumb::after{position:absolute;content:"";border-radius:50%;width:42px;height:42px;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);-moz-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);transform:translate(-50%, -50%);}</style><style data-emotion="css" data-s="">.css-1xcmt9q-MuiSlider-thumb.Mui-disabled{}</style><style data-emotion="css" data-s="">.css-1xcmt9q-MuiSlider-thumb.Mui-disabled:hover{box-shadow:none;}</style><style data-emotion="css" data-s="">.css-1xcmt9q-MuiSlider-thumb:hover,.css-1xcmt9q-MuiSlider-thumb.Mui-focusVisible{box-shadow:0px 0px 0px 8px rgba(25, 118, 210, 0.16);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-1xcmt9q-MuiSlider-thumb:hover,.css-1xcmt9q-MuiSlider-thumb.Mui-focusVisible{box-shadow:none;}}</style><style data-emotion="css" data-s="">.css-1xcmt9q-MuiSlider-thumb.Mui-active{box-shadow:0px 0px 0px 14px rgba(25, 118, 210, 0.16);}</style><style data-emotion="css" data-s="">.css-19wlyr4{width:45%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;}</style><style data-emotion="css" data-s="">.css-9f14q0-MuiTypography-root{margin:0;font-size:1rem;line-height:1.5;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:400;margin-top:30px;}</style><style data-emotion="css" data-s="">.css-ai393t{width:50px;height:20px;border-radius:30px;border:2px solid rgb(5 122 85);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:2px;cursor:pointer;background-color:#fff;position:relative;margin-top:30px;}</style><style data-emotion="css" data-s="">.css-1jydxt5{width:20px;height:20px;border-radius:50%;background-color:#ddd;position:absolute;top:2px;left:2px;-webkit-transition:left 0.2s ease;transition:left 0.2s ease;}</style><style data-emotion="css" data-s="">.css-1l4w6pd{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;}</style><style data-emotion="css" data-s="">.css-1ikdidl-MuiButton-root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:500;font-size:0.875rem;line-height:1.75;text-transform:uppercase;min-width:64px;padding:6px 16px;border:0;border-radius:8px;-webkit-transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;color:var(--variant-containedColor);background-color:var(--variant-containedBg);box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);--variant-textColor:#1976d2;--variant-outlinedColor:#1976d2;--variant-outlinedBorder:rgba(25, 118, 210, 0.5);--variant-containedColor:#fff;--variant-containedBg:#1976d2;border-radius:20px;text-transform:none;width:50%;background:rgb(5 122 85);border-radius:8px;color:white;padding-top:5px;padding-bottom:5px;margin-top:30px;}</style><style data-emotion="css" data-s="">.css-1ikdidl-MuiButton-root:hover{-webkit-text-decoration:none;text-decoration:none;}</style><style data-emotion="css" data-s="">.css-1ikdidl-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-1ikdidl-MuiButton-root:hover{box-shadow:0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-1ikdidl-MuiButton-root:hover{box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);}}</style><style data-emotion="css" data-s="">.css-1ikdidl-MuiButton-root:active{box-shadow:0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-1ikdidl-MuiButton-root.Mui-focusVisible{box-shadow:0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-1ikdidl-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);box-shadow:none;background-color:rgba(0, 0, 0, 0.12);}</style><style data-emotion="css" data-s="">@media (hover: hover){.css-1ikdidl-MuiButton-root:hover{--variant-containedBg:rgb(17, 82, 147);--variant-textBg:rgba(25, 118, 210, 0.04);--variant-outlinedBorder:#1976d2;--variant-outlinedBg:rgba(25, 118, 210, 0.04);}}</style><style data-emotion="css" data-s="">@media (min-width:0px){.css-1ikdidl-MuiButton-root{font-size:10px;}}</style><style data-emotion="css" data-s="">@media (min-width:960px){.css-1ikdidl-MuiButton-root{font-size:15px;}}</style><style data-emotion="css" data-s="">.css-jr8mj7-MuiButtonBase-root-MuiButton-root{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:500;font-size:0.875rem;line-height:1.75;text-transform:uppercase;min-width:64px;padding:6px 16px;border:0;border-radius:8px;-webkit-transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;color:var(--variant-containedColor);background-color:var(--variant-containedBg);box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);--variant-textColor:#1976d2;--variant-outlinedColor:#1976d2;--variant-outlinedBorder:rgba(25, 118, 210, 0.5);--variant-containedColor:#fff;--variant-containedBg:#1976d2;border-radius:20px;text-transform:none;width:50%;background:rgb(5 122 85);border-radius:8px;color:white;padding-top:5px;padding-bottom:5px;margin-top:30px;}</style><style data-emotion="css" data-s="">.css-jr8mj7-MuiButtonBase-root-MuiButton-root::-moz-focus-inner{border-style:none;}</style><style data-emotion="css" data-s="">.css-jr8mj7-MuiButtonBase-root-MuiButton-root.Mui-disabled{pointer-events:none;cursor:default;}</style><style data-emotion="css" data-s="">@media print{.css-jr8mj7-MuiButtonBase-root-MuiButton-root{-webkit-print-color-adjust:exact;color-adjust:exact;}}</style><style data-emotion="css" data-s="">.css-jr8mj7-MuiButtonBase-root-MuiButton-root:hover{-webkit-text-decoration:none;text-decoration:none;}</style><style data-emotion="css" data-s="">.css-jr8mj7-MuiButtonBase-root-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css" data-s="">.css-jr8mj7-MuiButtonBase-root-MuiButton-root:hover{box-shadow:0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">@media (hover: none){.css-jr8mj7-MuiButtonBase-root-MuiButton-root:hover{box-shadow:0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);}}</style><style data-emotion="css" data-s="">.css-jr8mj7-MuiButtonBase-root-MuiButton-root:active{box-shadow:0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-jr8mj7-MuiButtonBase-root-MuiButton-root.Mui-focusVisible{box-shadow:0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);}</style><style data-emotion="css" data-s="">.css-jr8mj7-MuiButtonBase-root-MuiButton-root.Mui-disabled{color:rgba(0, 0, 0, 0.26);box-shadow:none;background-color:rgba(0, 0, 0, 0.12);}</style><style data-emotion="css" data-s="">@media (hover: hover){.css-jr8mj7-MuiButtonBase-root-MuiButton-root:hover{--variant-containedBg:rgb(17, 82, 147);--variant-textBg:rgba(25, 118, 210, 0.04);--variant-outlinedBorder:#1976d2;--variant-outlinedBg:rgba(25, 118, 210, 0.04);}}</style><style data-emotion="css" data-s="">@media (min-width:0px){.css-jr8mj7-MuiButtonBase-root-MuiButton-root{font-size:10px;}}</style><style data-emotion="css" data-s="">@media (min-width:960px){.css-jr8mj7-MuiButtonBase-root-MuiButton-root{font-size:15px;}}</style><style data-emotion="css" data-s="">.css-1y6ic72{margin-left:10px;}</style><style data-emotion="css" data-s="">.css-1pivxxs-MuiDialog-root{}</style><style data-emotion="css" data-s="">@media print{.css-1pivxxs-MuiDialog-root{position:absolute!important;}}</style><style data-emotion="css" data-s="">.css-vhzu39{-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding-left:10%;padding-right:10%;padding-top:15px;padding-bottom:15px;}</style><style data-emotion="css" data-s="">@media (min-width:0px){.css-vhzu39{display:none;}}</style><style data-emotion="css" data-s="">@media (min-width:960px){.css-vhzu39{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}}</style><style data-emotion="css" data-s="">.css-1endc4w-MuiTypography-root{margin:0;font-size:1rem;line-height:1.5;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:400;}</style><style data-emotion="css" data-s="">.css-ff185y-MuiTypography-root{margin:0;font-size:1rem;line-height:1.5;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:400;font-size:1.25rem;}</style><style data-emotion="css" data-s="">.css-t1xtgo{border:1px solid grey;padding:0 20px;border-radius:30px;cursor:pointer;}</style><style data-emotion="css" data-s="">.css-l0jt21-MuiStack-root{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;gap:20px;}</style><style data-emotion="css" data-s="">.css-1vm20do{padding:9px 0;}</style><style data-emotion="css" data-s="">.css-12gbjuf-MuiTypography-root{margin:0;font-size:1rem;line-height:1.5;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:400;font-size:.9rem;font-weight:500;color:rgb(100,116,139);}</style><style data-emotion="css" data-s="">.css-r3djoj-MuiTouchRipple-root{overflow:hidden;pointer-events:none;position:absolute;z-index:0;top:0;right:0;bottom:0;left:0;border-radius:inherit;}</style><style data-emotion="css" data-s="">.css-y4cjyz-MuiTouchRipple-ripple{opacity:0;position:absolute;}</style><style data-emotion="css" data-s="">.css-y4cjyz-MuiTouchRipple-ripple.MuiTouchRipple-rippleVisible{opacity:0.3;-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1);-webkit-animation-name:animation-1taevns;animation-name:animation-1taevns;-webkit-animation-duration:550ms;animation-duration:550ms;-webkit-animation-timing-function:cubic-bezier(0.4, 0, 0.2, 1);animation-timing-function:cubic-bezier(0.4, 0, 0.2, 1);}</style><style data-emotion="css" data-s="">.css-y4cjyz-MuiTouchRipple-ripple.MuiTouchRipple-ripplePulsate{-webkit-animation-duration:200ms;animation-duration:200ms;}</style><style data-emotion="css" data-s="">.css-y4cjyz-MuiTouchRipple-ripple .MuiTouchRipple-child{opacity:1;display:block;width:100%;height:100%;border-radius:50%;background-color:currentColor;}</style><style data-emotion="css" data-s="">.css-y4cjyz-MuiTouchRipple-ripple .MuiTouchRipple-childLeaving{opacity:0;-webkit-animation-name:animation-5ich1p;animation-name:animation-5ich1p;-webkit-animation-duration:550ms;animation-duration:550ms;-webkit-animation-timing-function:cubic-bezier(0.4, 0, 0.2, 1);animation-timing-function:cubic-bezier(0.4, 0, 0.2, 1);}</style><style data-emotion="css" data-s="">.css-y4cjyz-MuiTouchRipple-ripple .MuiTouchRipple-childPulsate{position:absolute;left:0px;top:0;-webkit-animation-name:animation-f6tr5a;animation-name:animation-f6tr5a;-webkit-animation-duration:2500ms;animation-duration:2500ms;-webkit-animation-timing-function:cubic-bezier(0.4, 0, 0.2, 1);animation-timing-function:cubic-bezier(0.4, 0, 0.2, 1);-webkit-animation-iteration-count:infinite;animation-iteration-count:infinite;-webkit-animation-delay:200ms;animation-delay:200ms;}</style><style data-emotion="css" data-s="">@-webkit-keyframes animation-f6tr5a{0%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}50%{-webkit-transform:scale(0.92);-moz-transform:scale(0.92);-ms-transform:scale(0.92);transform:scale(0.92);}100%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}</style><style data-emotion="css" data-s="">@keyframes animation-f6tr5a{0%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}50%{-webkit-transform:scale(0.92);-moz-transform:scale(0.92);-ms-transform:scale(0.92);transform:scale(0.92);}100%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1);}}</style><style data-emotion="css" data-s="">@-webkit-keyframes animation-5ich1p{0%{opacity:1;}100%{opacity:0;}}</style><style data-emotion="css" data-s="">@keyframes animation-5ich1p{0%{opacity:1;}100%{opacity:0;}}</style><style data-emotion="css" data-s="">@-webkit-keyframes animation-1taevns{0%{-webkit-transform:scale(0);-moz-transform:scale(0);-ms-transform:scale(0);transform:scale(0);opacity:0.1;}100%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1);opacity:0.3;}}</style><style data-emotion="css" data-s="">@keyframes animation-1taevns{0%{-webkit-transform:scale(0);-moz-transform:scale(0);-ms-transform:scale(0);transform:scale(0);opacity:0.1;}100%{-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);transform:scale(1);opacity:0.3;}}</style><style data-emotion="css" data-s="">.css-1vdo258-MuiInputLabel-root{display:block;transform-origin:top left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;position:absolute;left:0;top:0;-webkit-transform:translate(0, 20px) scale(1);-moz-transform:translate(0, 20px) scale(1);-ms-transform:translate(0, 20px) scale(1);transform:translate(0, 20px) scale(1);-webkit-transition:color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;transition:color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;z-index:1;pointer-events:none;-webkit-transform:translate(14px, 16px) scale(1);-moz-transform:translate(14px, 16px) scale(1);-ms-transform:translate(14px, 16px) scale(1);transform:translate(14px, 16px) scale(1);max-width:calc(100% - 24px);}</style><style data-emotion="css" data-s="">.css-1twjsgq-MuiFormLabel-root-MuiInputLabel-root{color:rgba(0, 0, 0, 0.6);font-size:1rem;line-height:1.4375em;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-weight:400;padding:0;position:relative;display:block;transform-origin:top left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;position:absolute;left:0;top:0;-webkit-transform:translate(0, 20px) scale(1);-moz-transform:translate(0, 20px) scale(1);-ms-transform:translate(0, 20px) scale(1);transform:translate(0, 20px) scale(1);-webkit-transition:color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;transition:color 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,max-width 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;z-index:1;pointer-events:none;-webkit-transform:translate(14px, 16px) scale(1);-moz-transform:translate(14px, 16px) scale(1);-ms-transform:translate(14px, 16px) scale(1);transform:translate(14px, 16px) scale(1);max-width:calc(100% - 24px);}</style><style data-emotion="css" data-s="">.css-1twjsgq-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{color:#1976d2;}</style><style data-emotion="css" data-s="">.css-1twjsgq-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled{color:rgba(0, 0, 0, 0.38);}</style><style data-emotion="css" data-s="">.css-1twjsgq-MuiFormLabel-root-MuiInputLabel-root.Mui-error{color:#f44336;}</style><style data-emotion="css" data-s="">.css-81qg8w{float:unset;width:auto;overflow:hidden;display:block;padding:0;height:11px;font-size:0.75em;visibility:hidden;max-width:0.01px;-webkit-transition:max-width 50ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;transition:max-width 50ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;white-space:nowrap;}</style><style data-emotion="css" data-s="">.css-81qg8w>span{padding-left:5px;padding-right:5px;display:inline-block;opacity:0;visibility:visible;}</style></head>
+  <body>
+    <div id="root"><div><div class="MuiBox-root css-1u1hos9"><div class="MuiBox-root css-2pa33l"><div class="MuiBox-root css-ymkwy7"><div class="MuiBox-root css-1h2sv0j"><div class="MuiBox-root css-0"><a href="http://localhost:5173/"><img src="./OpenAI Text To Speech_files/loading-lines-6747317-5601928.webp" width="50"></a></div><div class="MuiBox-root css-0"><a href="http://localhost:5173/"><p class="MuiTypography-root MuiTypography-body1 css-ff185y-MuiTypography-root">Text To Speech OpenAI</p></a></div></div><div class="MuiBox-root css-t1xtgo"><div class="MuiStack-root css-l0jt21-MuiStack-root"><a class="" href="http://localhost:5173/"><div class="MuiBox-root css-1vm20do"><p class="MuiTypography-root MuiTypography-body1 css-12gbjuf-MuiTypography-root">Vocalize</p></div></a><a class="" href="http://localhost:5173/material-video"><div class="MuiBox-root css-1vm20do"><p class="MuiTypography-root MuiTypography-body1 css-12gbjuf-MuiTypography-root">Materials to Video</p></div></a><a class="" href="http://localhost:5173/history"><div class="MuiBox-root css-1vm20do"><p class="MuiTypography-root MuiTypography-body1 css-12gbjuf-MuiTypography-root">History</p></div></a><a class="" href="http://localhost:5173/pricing-plans"><div class="MuiBox-root css-1vm20do"><p class="MuiTypography-root MuiTypography-body1 css-12gbjuf-MuiTypography-root">Pricing Plans</p></div></a><a class="" href="http://localhost:5173/privacy"><div class="MuiBox-root css-1vm20do"><p class="MuiTypography-root MuiTypography-body1 css-12gbjuf-MuiTypography-root">Privacy Policy</p></div></a><a class="" href="http://localhost:5173/terms"><div class="MuiBox-root css-1vm20do"><p class="MuiTypography-root MuiTypography-body1 css-12gbjuf-MuiTypography-root">Terms of Service</p></div></a><div class="MuiBox-root css-1vm20do"><p class="MuiTypography-root MuiTypography-body1 css-12gbjuf-MuiTypography-root">Contact</p></div></div></div><div class="MuiBox-root css-17pkplr"><div class="MuiBox-root css-0"><div class="MuiBox-root css-0"><img src="./OpenAI Text To Speech_files/us.png" width="25" height="25" alt="" style="border-radius: 50%; object-fit: cover;"></div></div><div class="MuiBox-root css-0"><a href="http://localhost:5173/signin"><button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1rmfeue-MuiButtonBase-root-MuiButton-root" tabindex="0" type="button">Sign in<span class="MuiButton-icon MuiButton-endIcon MuiButton-iconSizeMedium css-1vk8yuc-MuiButton-endIcon"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1qdt6xk-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ArrowForwardIcon"><path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path></svg></span></button></a></div></div><div></div></div></div><div class="MuiBox-root css-0"><div class="MuiBox-root css-rmu76h"><div class="MuiBox-root css-gg4vpm"><div class="MuiBox-root css-1ug7zcj"> <p class="MuiTypography-root MuiTypography-body1 css-ho93d2-MuiTypography-root">Link</p><div class="MuiBox-root css-w2hm5q"> <div class="MuiFormControl-root MuiTextField-root material-video css-z6u04c-MuiFormControl-root-MuiTextField-root"><div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall MuiInputBase-adornedStart MuiInputBase-adornedEnd css-cxhsvb-MuiInputBase-root-MuiOutlinedInput-root"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="30" width="30" xmlns="http://www.w3.org/2000/svg" style="padding-right: 5px;"><path d="M13.0605 8.11073L14.4747 9.52494C17.2084 12.2586 17.2084 16.6908 14.4747 19.4244L14.1211 19.778C11.3875 22.5117 6.95531 22.5117 4.22164 19.778C1.48797 17.0443 1.48797 12.6122 4.22164 9.87849L5.63585 11.2927C3.68323 13.2453 3.68323 16.4112 5.63585 18.3638C7.58847 20.3164 10.7543 20.3164 12.7069 18.3638L13.0605 18.0102C15.0131 16.0576 15.0131 12.8918 13.0605 10.9392L11.6463 9.52494L13.0605 8.11073ZM19.778 14.1211L18.3638 12.7069C20.3164 10.7543 20.3164 7.58847 18.3638 5.63585C16.4112 3.68323 13.2453 3.68323 11.2927 5.63585L10.9392 5.98941C8.98653 7.94203 8.98653 11.1079 10.9392 13.0605L12.3534 14.4747L10.9392 15.8889L9.52494 14.4747C6.79127 11.741 6.79127 7.30886 9.52494 4.57519L9.87849 4.22164C12.6122 1.48797 17.0443 1.48797 19.778 4.22164C22.5117 6.95531 22.5117 11.3875 19.778 14.1211Z"></path></svg><input aria-invalid="false" id="demo-helper-text-aligned" type="text" class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedStart MuiInputBase-inputAdornedEnd css-12tjcea-MuiInputBase-input-MuiOutlinedInput-input" value=""><button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1yxcj1e-MuiButtonBase-root-MuiButton-root" tabindex="0" type="button">Get</button><fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"><legend class="css-w4cd9x"><span class="notranslate">​</span></legend></fieldset></div></div></div><div class="MuiBox-root css-1xaekgw"><video width="100%" height="255px" controls="" style="border-radius: 10px;"><source src="https://www.youtube.com/watch?v=7jQipab-Ddc" type="video/mp4">Your browser does not support the video tag.</video></div><div class="MuiBox-root css-1xaekgw"><div style="max-width: 800px; margin: 20px auto;"><div class="MuiStack-root css-1sazv7p-MuiStack-root"><div class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded css-60iay8-MuiPaper-root"><h6 class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom css-95okd6-MuiTypography-root">#1</h6><div class="MuiStack-root css-pl8gqh-MuiStack-root"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-cmpglg-MuiFormControl-root-MuiTextField-root"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1fj8q0k-MuiFormLabel-root-MuiInputLabel-root" data-shrink="true" for=":r2:" id=":r2:-label">Start Time</label><div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-1o9i655-MuiInputBase-root-MuiOutlinedInput-root"><input aria-invalid="false" id=":r2:" type="text" class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input" value="00:00:01,000"><fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"><legend class="css-w1u3ce"><span>Start Time</span></legend></fieldset></div></div><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-cmpglg-MuiFormControl-root-MuiTextField-root"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1fj8q0k-MuiFormLabel-root-MuiInputLabel-root" data-shrink="true" for=":r3:" id=":r3:-label">End Time</label><div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-1o9i655-MuiInputBase-root-MuiOutlinedInput-root"><input aria-invalid="false" id=":r3:" type="text" class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input" value="00:00:04,000"><fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"><legend class="css-w1u3ce"><span>End Time</span></legend></fieldset></div></div></div><div class="MuiFormControl-root MuiFormControl-marginNormal MuiFormControl-fullWidth MuiTextField-root css-16bevx5-MuiFormControl-root-MuiTextField-root"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1fj8q0k-MuiFormLabel-root-MuiInputLabel-root" data-shrink="true" for=":r4:" id=":r4:-label">Text</label><div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-4kxyot-MuiInputBase-root-MuiOutlinedInput-root"><textarea aria-invalid="false" id=":r4:" class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input" style="height: 23px; overflow: hidden;">Hello world!</textarea><textarea aria-hidden="true" class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input" readonly="" tabindex="-1" style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0px); padding-top: 0px; padding-bottom: 0px; width: 470.25px;"></textarea><fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"><legend class="css-w1u3ce"><span>Text</span></legend></fieldset></div></div><div class="MuiStack-root css-n0lc3s-MuiStack-root"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorRgb(5 122 85) MuiIconButton-sizeSmall css-r363y4-MuiButtonBase-root-MuiIconButton-root" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="PlaylistAddIcon"><path d="M14 10H3v2h11zm0-4H3v2h11zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2zM3 16h7v-2H3z"></path></svg><span class="MuiTouchRipple-root css-r3djoj-MuiTouchRipple-root"></span></button><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorError MuiIconButton-sizeSmall css-1kif9lf-MuiButtonBase-root-MuiIconButton-root" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DeleteIcon"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"></path></svg><span class="MuiTouchRipple-root css-r3djoj-MuiTouchRipple-root"></span></button></div></div><div class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded css-60iay8-MuiPaper-root"><h6 class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom css-95okd6-MuiTypography-root">#2</h6><div class="MuiStack-root css-pl8gqh-MuiStack-root"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-cmpglg-MuiFormControl-root-MuiTextField-root"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1fj8q0k-MuiFormLabel-root-MuiInputLabel-root" data-shrink="true" for=":r5:" id=":r5:-label">Start Time</label><div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-1o9i655-MuiInputBase-root-MuiOutlinedInput-root"><input aria-invalid="false" id=":r5:" type="text" class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input" value="00:00:05,000"><fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"><legend class="css-w1u3ce"><span>Start Time</span></legend></fieldset></div></div><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-cmpglg-MuiFormControl-root-MuiTextField-root"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1fj8q0k-MuiFormLabel-root-MuiInputLabel-root" data-shrink="true" for=":r6:" id=":r6:-label">End Time</label><div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-1o9i655-MuiInputBase-root-MuiOutlinedInput-root"><input aria-invalid="false" id=":r6:" type="text" class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input" value="00:00:07,000"><fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"><legend class="css-w1u3ce"><span>End Time</span></legend></fieldset></div></div></div><div class="MuiFormControl-root MuiFormControl-marginNormal MuiFormControl-fullWidth MuiTextField-root css-16bevx5-MuiFormControl-root-MuiTextField-root"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1fj8q0k-MuiFormLabel-root-MuiInputLabel-root" data-shrink="true" for=":r7:" id=":r7:-label">Text</label><div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-4kxyot-MuiInputBase-root-MuiOutlinedInput-root"><textarea aria-invalid="false" id=":r7:" class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input" style="height: 23px; overflow: hidden;">toan</textarea><textarea aria-hidden="true" class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input" readonly="" tabindex="-1" style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0px); padding-top: 0px; padding-bottom: 0px; width: 470.25px;"></textarea><fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"><legend class="css-w1u3ce"><span>Text</span></legend></fieldset></div></div><div class="MuiStack-root css-n0lc3s-MuiStack-root"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorRgb(5 122 85) MuiIconButton-sizeSmall css-r363y4-MuiButtonBase-root-MuiIconButton-root" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="PlaylistAddIcon"><path d="M14 10H3v2h11zm0-4H3v2h11zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2zM3 16h7v-2H3z"></path></svg><span class="MuiTouchRipple-root css-r3djoj-MuiTouchRipple-root"></span></button><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorError MuiIconButton-sizeSmall css-1kif9lf-MuiButtonBase-root-MuiIconButton-root" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DeleteIcon"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"></path></svg></button></div></div><div class="MuiPaper-root MuiPaper-outlined MuiPaper-rounded css-60iay8-MuiPaper-root"><h6 class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-gutterBottom css-95okd6-MuiTypography-root">#3</h6><div class="MuiStack-root css-pl8gqh-MuiStack-root"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-cmpglg-MuiFormControl-root-MuiTextField-root"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-focused MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1fj8q0k-MuiFormLabel-root-MuiInputLabel-root" data-shrink="true" for=":rc:" id=":rc:-label">Start Time</label><div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth Mui-focused MuiInputBase-formControl css-1o9i655-MuiInputBase-root-MuiOutlinedInput-root"><input aria-invalid="false" id=":rc:" type="text" class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input" value=""><fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"><legend class="css-w1u3ce"><span>Start Time</span></legend></fieldset></div></div><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-cmpglg-MuiFormControl-root-MuiTextField-root"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1twjsgq-MuiFormLabel-root-MuiInputLabel-root" data-shrink="false" for=":rd:" id=":rd:-label">End Time</label><div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl css-1o9i655-MuiInputBase-root-MuiOutlinedInput-root"><input aria-invalid="false" id=":rd:" type="text" class="MuiInputBase-input MuiOutlinedInput-input css-16wblaj-MuiInputBase-input-MuiOutlinedInput-input" value=""><fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"><legend class="css-81qg8w"><span>End Time</span></legend></fieldset></div></div></div><div class="MuiFormControl-root MuiFormControl-marginNormal MuiFormControl-fullWidth MuiTextField-root css-16bevx5-MuiFormControl-root-MuiTextField-root"><label class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined css-1twjsgq-MuiFormLabel-root-MuiInputLabel-root" data-shrink="false" for=":re:" id=":re:-label">Text</label><div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-4kxyot-MuiInputBase-root-MuiOutlinedInput-root"><textarea aria-invalid="false" id=":re:" class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input" style="height: 23px; overflow: hidden;"></textarea><textarea aria-hidden="true" class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputMultiline css-w4nesw-MuiInputBase-input-MuiOutlinedInput-input" readonly="" tabindex="-1" style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0px); padding-top: 0px; padding-bottom: 0px; width: 470.25px;"></textarea><fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"><legend class="css-81qg8w"><span>Text</span></legend></fieldset></div></div><div class="MuiStack-root css-n0lc3s-MuiStack-root"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorRgb(5 122 85) MuiIconButton-sizeSmall css-r363y4-MuiButtonBase-root-MuiIconButton-root" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="PlaylistAddIcon"><path d="M14 10H3v2h11zm0-4H3v2h11zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2zM3 16h7v-2H3z"></path></svg></button><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorError MuiIconButton-sizeSmall css-1kif9lf-MuiButtonBase-root-MuiIconButton-root" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DeleteIcon"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6zM19 4h-3.5l-1-1h-5l-1 1H5v2h14z"></path></svg></button></div></div></div><button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-17b2bma-MuiButtonBase-root-MuiButton-root" tabindex="0" type="button"><span class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeMedium css-dm569u-MuiButton-startIcon"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="AddIcon"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"></path></svg></span>Add Subtitle</button></div></div></div><div class="MuiBox-root css-1adb2pb"><p class="MuiTypography-root MuiTypography-body1 css-ho93d2-MuiTypography-root">Language</p><div class="MuiBox-root css-69i1ev"><div class="MuiFormControl-root css-gfo1ug-MuiFormControl-root"><div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl more-select css-2ne59s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"><div tabindex="0" role="combobox" aria-controls=":r8:" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="demo-simple-select" id="demo-simple-select" class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"><span class="notranslate">​</span></div><input aria-invalid="false" aria-hidden="true" tabindex="-1" class="MuiSelect-nativeInput css-j0riat-MuiSelect-nativeInput" value=""><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-lohd6h-MuiSvgIcon-root-MuiSelect-icon" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ArrowDropDownIcon"><path d="M7 10l5 5 5-5z"></path></svg><fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"><legend class="css-w4cd9x"><span class="notranslate">​</span></legend></fieldset></div></div><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="25" width="25" xmlns="http://www.w3.org/2000/svg"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path></svg><div class="MuiFormControl-root css-gfo1ug-MuiFormControl-root"><div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl more-select css-mwwo2e-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"><div tabindex="0" role="combobox" aria-controls=":r9:" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="demo-simple-select" id="demo-simple-select" class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"><span class="notranslate">​</span></div><input aria-invalid="false" aria-hidden="true" tabindex="-1" class="MuiSelect-nativeInput css-j0riat-MuiSelect-nativeInput" value=""><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-lohd6h-MuiSvgIcon-root-MuiSelect-icon" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ArrowDropDownIcon"><path d="M7 10l5 5 5-5z"></path></svg><fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"><legend class="css-w4cd9x"><span class="notranslate">​</span></legend></fieldset></div></div></div><div class="MuiBox-root css-gg4vpm"><p class="MuiTypography-root MuiTypography-body1 css-12p8od-MuiTypography-root">Translate service</p><p class="MuiTypography-root MuiTypography-body1 css-12p8od-MuiTypography-root">Voice &amp; sub</p></div><div class="MuiBox-root css-gg4vpm"><div class="MuiFormControl-root css-gfo1ug-MuiFormControl-root"><div class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl more-select css-2ne59s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"><div tabindex="0" role="combobox" aria-controls=":ra:" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="demo-simple-select" id="demo-simple-select" class="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-1kg98rc-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"><span class="notranslate">​</span></div><input aria-invalid="false" aria-hidden="true" tabindex="-1" class="MuiSelect-nativeInput css-j0riat-MuiSelect-nativeInput" value=""><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-lohd6h-MuiSvgIcon-root-MuiSelect-icon" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ArrowDropDownIcon"><path d="M7 10l5 5 5-5z"></path></svg><fieldset aria-hidden="true" class="MuiOutlinedInput-notchedOutline css-1ll44ll-MuiOutlinedInput-notchedOutline"><legend class="css-w4cd9x"><span class="notranslate">​</span></legend></fieldset></div></div><div class="MuiBox-root css-1ttywp7"><button class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1mkjir-MuiButtonBase-root-MuiButton-root" tabindex="0" type="button"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style="margin-right: 10px;"><path d="M5 7H7V17H5V7ZM1 10H3V14H1V10ZM9 2H11V20H9V2ZM13 4H15V22H13V4ZM17 7H19V17H17V7ZM21 10H23V14H21V10Z"></path></svg> Voice</button></div></div><p class="MuiTypography-root MuiTypography-body1 css-12p8od-MuiTypography-root">Volume</p><div class="MuiBox-root css-sr5uyx"><div class="MuiBox-root css-1ttywp7"><div><div class="MuiBox-root css-lcoy4n"><p class="MuiTypography-root MuiTypography-body1 css-4dhbqd-MuiTypography-root">Origin</p><div class="css-174rtei"><div class="css-1pwustz" style="transform: scaleY(0.6); background-color: rgb(5, 122, 85);"></div><div class="css-1pwustz" style="transform: scaleY(0.7); background-color: rgb(5, 122, 85);"></div><div class="css-1pwustz" style="transform: scaleY(0.8); background-color: rgb(5, 122, 85);"></div><div class="css-1pwustz" style="transform: scaleY(0.9); background-color: rgb(5, 122, 85);"></div><div class="css-16rvlqv" style="transform: scaleY(1); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.1); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.2); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.3); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.4); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.5); background-color: rgb(238, 238, 238);"></div></div></div><span class="MuiSlider-root MuiSlider-colorPrimary MuiSlider-sizeMedium css-lwv7bf-MuiSlider-root"><span class="MuiSlider-rail css-r64h58-MuiSlider-rail"></span><span class="MuiSlider-track css-xvk2i-MuiSlider-track" style="left: 0%; width: 40%;"></span><span data-index="0" class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-1xcmt9q-MuiSlider-thumb" style="left: 40%;"><input data-index="0" aria-valuenow="40" aria-orientation="horizontal" aria-valuemax="100" aria-valuemin="0" type="range" min="0" max="100" step="1" value="40" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"></span></span></div></div><div class="MuiBox-root css-1ttywp7"><div><div class="MuiBox-root css-lcoy4n"><p class="MuiTypography-root MuiTypography-body1 css-4dhbqd-MuiTypography-root">Translated</p><div class="css-174rtei"><div class="css-1pwustz" style="transform: scaleY(0.6); background-color: rgb(5, 122, 85);"></div><div class="css-1pwustz" style="transform: scaleY(0.7); background-color: rgb(5, 122, 85);"></div><div class="css-1pwustz" style="transform: scaleY(0.8); background-color: rgb(5, 122, 85);"></div><div class="css-1pwustz" style="transform: scaleY(0.9); background-color: rgb(5, 122, 85);"></div><div class="css-16rvlqv" style="transform: scaleY(1); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.1); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.2); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.3); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.4); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.5); background-color: rgb(238, 238, 238);"></div></div></div><span class="MuiSlider-root MuiSlider-colorPrimary MuiSlider-sizeMedium css-lwv7bf-MuiSlider-root"><span class="MuiSlider-rail css-r64h58-MuiSlider-rail"></span><span class="MuiSlider-track css-xvk2i-MuiSlider-track" style="left: 0%; width: 40%;"></span><span data-index="0" class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-1xcmt9q-MuiSlider-thumb" style="left: 40%;"><input data-index="0" aria-valuenow="40" aria-orientation="horizontal" aria-valuemax="100" aria-valuemin="0" type="range" min="0" max="100" step="1" value="40" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"></span></span></div></div></div><p class="MuiTypography-root MuiTypography-body1 css-12p8od-MuiTypography-root">Sub</p><div class="MuiBox-root css-sr5uyx"><div class="MuiBox-root css-19wlyr4"><p class="MuiTypography-root MuiTypography-body1 css-9f14q0-MuiTypography-root">Sub</p><div class="css-ai393t"><div class="css-1jydxt5"></div></div></div><div class="MuiBox-root css-1ttywp7"><div><div class="MuiBox-root css-lcoy4n"><p class="MuiTypography-root MuiTypography-body1 css-4dhbqd-MuiTypography-root">Size</p><div class="css-174rtei"><div class="css-1pwustz" style="transform: scaleY(0.6); background-color: rgb(5, 122, 85);"></div><div class="css-1pwustz" style="transform: scaleY(0.7); background-color: rgb(5, 122, 85);"></div><div class="css-1pwustz" style="transform: scaleY(0.8); background-color: rgb(5, 122, 85);"></div><div class="css-1pwustz" style="transform: scaleY(0.9); background-color: rgb(5, 122, 85);"></div><div class="css-16rvlqv" style="transform: scaleY(1); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.1); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.2); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.3); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.4); background-color: rgb(238, 238, 238);"></div><div class="css-16rvlqv" style="transform: scaleY(1.5); background-color: rgb(238, 238, 238);"></div></div></div><span class="MuiSlider-root MuiSlider-colorPrimary MuiSlider-sizeMedium css-lwv7bf-MuiSlider-root"><span class="MuiSlider-rail css-r64h58-MuiSlider-rail"></span><span class="MuiSlider-track css-xvk2i-MuiSlider-track" style="left: 0%; width: 40%;"></span><span data-index="0" class="MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary MuiSlider-thumb MuiSlider-thumbSizeMedium MuiSlider-thumbColorPrimary css-1xcmt9q-MuiSlider-thumb" style="left: 40%;"><input data-index="0" aria-valuenow="40" aria-orientation="horizontal" aria-valuemax="100" aria-valuemin="0" type="range" min="0" max="100" step="1" value="40" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 100%; margin: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 100%; direction: ltr;"></span></span></div></div></div><div class="MuiBox-root css-1l4w6pd"><button class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-jr8mj7-MuiButtonBase-root-MuiButton-root" tabindex="0" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="1.7em" height="1.7em" fill="none" viewBox="0 0 17 21" focusable="false" class="chakra-icon css-1uib6s7"><path fill="#fff" d="M9.05 8.2a.474.474 0 0 1 .901 0l.847 2.542a3.8 3.8 0 0 0 2.4 2.399l2.541.846a.474.474 0 0 1 0 .9l-2.542.847a3.8 3.8 0 0 0-2.4 2.4l-.846 2.542a.474.474 0 0 1-.9 0l-.847-2.542a3.8 3.8 0 0 0-2.399-2.4l-2.542-.846a.474.474 0 0 1 0-.9l2.542-.847a3.8 3.8 0 0 0 2.4-2.4zM3.98 1.506a.285.285 0 0 1 .541 0l.508 1.525c.227.68.76 1.213 1.44 1.44l1.525.508a.285.285 0 0 1 0 .54l-1.525.508a2.27 2.27 0 0 0-1.44 1.44l-.508 1.525a.285.285 0 0 1-.54 0l-.508-1.525a2.27 2.27 0 0 0-1.44-1.44L.508 5.52a.285.285 0 0 1 0-.54l1.525-.508a2.27 2.27 0 0 0 1.44-1.44zM13.26.13a.19.19 0 0 1 .36 0l.338 1.016c.15.454.507.81.96.96l1.017.34a.19.19 0 0 1 0 .359l-1.016.338a1.52 1.52 0 0 0-.961.961l-.339 1.016a.19.19 0 0 1-.36 0l-.338-1.016a1.52 1.52 0 0 0-.96-.96l-1.015-.34a.19.19 0 0 1 0-.359l1.016-.338c.454-.151.81-.507.96-.961z"></path></svg><div class="MuiBox-root css-1y6ic72">Translate </div></button></div></div></div></div></div><div class="MuiBox-root css-vhzu39"><p class="MuiTypography-root MuiTypography-body1 css-1endc4w-MuiTypography-root">© Copyright 2024, Text To Speech OpenAI . Version 1.1.0</p><p class="MuiTypography-root MuiTypography-body1 css-1endc4w-MuiTypography-root">Contact Us: <span style="color: rgb(5, 122, 85); font-weight: bold;"> ai@gmv.vn</span></p></div></div><div class="Toastify"></div></div></div>
+    <script type="module" src="./OpenAI Text To Speech_files/main.tsx"></script>
+  
+
+</body></html>

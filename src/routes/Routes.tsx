@@ -17,52 +17,53 @@ import MaterialVideoController from "../pages/material_video/MaterialVideoContro
 import DashBoardController from "../pages/admin/dashboard/DashBoardController";
 import LayoutAdmin from "../components/layouts/LayoutAdmin";
 import useUTMTracker from "../components/useUTMTracker";
+import TranslationController from "../pages/translation/TranslationController";
 
 const Router = () => {
   const context: any = useCoursesContext();
-  useUTMTracker()
+  useUTMTracker();
   return (
-   
-      <Routes>
-        <Route path='/' element={<LayoutWebsite />}>
-          <Route path='' element={<VocalizeController />} />
-          <Route
-            path='buy-credits'
-            element={
-              <PrivateRouter user={context.state.user}>
-                <BuyCreditController />
-              </PrivateRouter>
-            }
-          />
-          <Route
-            path='profile'
-            element={
-              <PrivateRouter user={context.state.user}>
-                <ProfileController />
-              </PrivateRouter>
-            }
-          />
-          <Route path='history' element={<HistoryController />} />
-          <Route path='privacy' element={<PrivacyController />} />
-          <Route path='terms' element={<TermsController />} />
-          <Route path='material-video' element={<MaterialVideoController />} />
-          <Route path='pricing-plans' element={<PricingPlansController />} />
-          <Route
-            path='payment-history'
-            element={
-              <PrivateRouter user={context.state.user}>
-                <PaymentHistoryController />
-              </PrivateRouter>
-            }
-          />
-        </Route>
-        <Route path='/admin' element={<LayoutAdmin />}>
-          <Route path='' element={<DashBoardController />} />
-        </Route>
-        <Route path='signin' element={<SignInController />} />
-        <Route path='auth/callback' element={<SignUpController />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
+    <Routes>
+      <Route path='/' element={<LayoutWebsite />}>
+        <Route path='' element={<VocalizeController />} />
+        <Route path='translation' element={<TranslationController />} />
+        <Route
+          path='buy-credits'
+          element={
+            <PrivateRouter user={context.state.user}>
+              <BuyCreditController />
+            </PrivateRouter>
+          }
+        />
+        <Route
+          path='profile'
+          element={
+            <PrivateRouter user={context.state.user}>
+              <ProfileController />
+            </PrivateRouter>
+          }
+        />
+        <Route path='history' element={<HistoryController />} />
+        <Route path='privacy' element={<PrivacyController />} />
+        <Route path='terms' element={<TermsController />} />
+        <Route path='material-video' element={<MaterialVideoController />} />
+        <Route path='pricing-plans' element={<PricingPlansController />} />
+        <Route
+          path='payment-history'
+          element={
+            <PrivateRouter user={context.state.user}>
+              <PaymentHistoryController />
+            </PrivateRouter>
+          }
+        />
+      </Route>
+      <Route path='/admin' element={<LayoutAdmin />}>
+        <Route path='' element={<DashBoardController />} />
+      </Route>
+      <Route path='signin' element={<SignInController />} />
+      <Route path='auth/callback' element={<SignUpController />} />
+      <Route path='*' element={<NotFound />} />
+    </Routes>
   );
 };
 

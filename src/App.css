@@ -177,5 +177,5 @@ input[type="number"] {
   padding: 8px !important;
 }
 .more-select div {
-  padding: 10px !important;
+  padding: 10px;
 }
