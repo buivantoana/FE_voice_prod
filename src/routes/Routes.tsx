@@ -18,6 +18,7 @@ import DashBoardController from "../pages/admin/dashboard/DashBoardController";
 import LayoutAdmin from "../components/layouts/LayoutAdmin";
 import useUTMTracker from "../components/useUTMTracker";
 import TranslationController from "../pages/translation/TranslationController";
+import SignUpNomalController from "../pages/signup/SignUpNomalController";
 
 const Router = () => {
   const context: any = useCoursesContext();
@@ -61,6 +62,7 @@ const Router = () => {
         <Route path='' element={<DashBoardController />} />
       </Route>
       <Route path='signin' element={<SignInController />} />
+      <Route path='signup' element={<SignUpNomalController />} />
       <Route path='auth/callback' element={<SignUpController />} />
       <Route path='*' element={<NotFound />} />
     </Routes>

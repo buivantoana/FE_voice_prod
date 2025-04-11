@@ -13,6 +13,7 @@ import React, { useEffect, useState } from "react";
 import {
   RiArrowDownSLine,
   RiCloseLine,
+  RiEmojiStickerFill,
   RiFileTextLine,
   RiHqLine,
   RiWechatFill,
@@ -35,6 +36,7 @@ import StoryMakerController from "./StoryMakerController";
 import DocumentController from "./DocumentController";
 import { useTranslation } from "react-i18next";
 import vn from "../../images/vn.png";
+import EmojController from "./EmojController";
 const images: any = {
   alloy: alloy,
   echo: echo,
@@ -146,7 +148,7 @@ const VocalizeView = ({
         <Box
           position={"relative"}
           bgcolor={"white"}
-          height={{ xs: "65vh", md: "75vh" }}
+          height={{ xs: "65vh", md: "68vh" }}
           width={{ xs: "100%", md: "49%" }}
           border={"1px solid #dddddd"}
           borderRadius={"8px"}>
@@ -191,6 +193,29 @@ const VocalizeView = ({
                   fontSize={{ xs: ".7rem", md: ".9rem" }}
                   fontWeight={"500"}>
                   {t("input_text")}
+                </Typography>
+              </Box>
+              <Box
+                display={"flex"}
+                alignItems={"center"}
+                onClick={() => {
+                  setTab("emoj");
+                }}
+                gap={"5px"}
+                padding={"9px 0"}
+                sx={{
+                  borderBottom:
+                    tab == "emoj"
+                      ? `3px solid ${theme.palette.active.main}`
+                      : "unset",
+                  color: tab == "emoj" ? "black" : "grey_500.main",
+                }}>
+                <RiEmojiStickerFill />
+
+                <Typography
+                  fontSize={{ xs: ".7rem", md: ".9rem" }}
+                  fontWeight={"500"}>
+                  {t("emotional_text")}
                 </Typography>
               </Box>
               <Box
@@ -315,7 +340,7 @@ const VocalizeView = ({
           {tab == "document" && (
             <DocumentController setFile={setFile} file={file} />
           )}
-          {tab == "input_text" && (
+          {(tab == "input_text" || tab == "emoj") && (
             <>
               {textVoice.length > 0 && (
                 <Box
@@ -337,6 +362,11 @@ const VocalizeView = ({
               )}
             </>
           )}
+           {tab == "emoj" &&
+           <Box>
+              <EmojController setTextVoice={setTextVoice} limit={limit} textVoice={textVoice} />
+           </Box>
+           }
         </Box>
         <Box
           display={{ xs: "none", md: "flex" }}

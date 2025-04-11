@@ -206,7 +206,7 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
             padding: "30px",
           }}>
           <Typography sx={{ mb: "10px", fontWeight: "500" }}>
-            Language
+            {t("language")}
           </Typography>
           <Box
             sx={{
@@ -342,10 +342,10 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Typography sx={{ my: "10px", fontWeight: "500", width: "45%" }}>
-              Translate service
+            {t("translate_service")}
             </Typography>
             <Typography sx={{ my: "10px", fontWeight: "500", width: "45%" }}>
-              Voice & sub
+               {t("voice_sub")}
             </Typography>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -455,7 +455,7 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
             </Box>
           </Box>
           <Typography sx={{ my: "10px", fontWeight: "500", width: "45%" }}>
-            Volume
+          {t("volume")}
           </Typography>
           <Box
             sx={{
@@ -464,14 +464,14 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
               mt: "-30px",
             }}>
             <Box width={"45%"}>
-              <VisualSlider title={"Origin"} />
+              <VisualSlider title={t("origin")}  />
             </Box>
             <Box width={"45%"}>
-              <VisualSlider title={"Translated"} />
+              <VisualSlider title={t("translated")} />
             </Box>
           </Box>
           <Typography sx={{ my: "10px", fontWeight: "500", width: "45%" }}>
-            Sub
+          {t("sub")}
           </Typography>
           <Box
             sx={{
@@ -486,11 +486,11 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
                 alignItems: "center",
                 justifyContent: "space-between",
               }}>
-              <Typography mt={"30px"}>Sub</Typography>
+              <Typography mt={"30px"}>   {t("sub")}</Typography>
               <CustomSwitch />
             </Box>
             <Box width={"45%"}>
-              <VisualSlider title={"Size"} />
+              <VisualSlider title={t("size")}  />
             </Box>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
@@ -517,7 +517,7 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
                   fill='#fff'
                   d='M9.05 8.2a.474.474 0 0 1 .901 0l.847 2.542a3.8 3.8 0 0 0 2.4 2.399l2.541.846a.474.474 0 0 1 0 .9l-2.542.847a3.8 3.8 0 0 0-2.4 2.4l-.846 2.542a.474.474 0 0 1-.9 0l-.847-2.542a3.8 3.8 0 0 0-2.399-2.4l-2.542-.846a.474.474 0 0 1 0-.9l2.542-.847a3.8 3.8 0 0 0 2.4-2.4zM3.98 1.506a.285.285 0 0 1 .541 0l.508 1.525c.227.68.76 1.213 1.44 1.44l1.525.508a.285.285 0 0 1 0 .54l-1.525.508a2.27 2.27 0 0 0-1.44 1.44l-.508 1.525a.285.285 0 0 1-.54 0l-.508-1.525a2.27 2.27 0 0 0-1.44-1.44L.508 5.52a.285.285 0 0 1 0-.54l1.525-.508a2.27 2.27 0 0 0 1.44-1.44zM13.26.13a.19.19 0 0 1 .36 0l.338 1.016c.15.454.507.81.96.96l1.017.34a.19.19 0 0 1 0 .359l-1.016.338a1.52 1.52 0 0 0-.961.961l-.339 1.016a.19.19 0 0 1-.36 0l-.338-1.016a1.52 1.52 0 0 0-.96-.96l-1.015-.34a.19.19 0 0 1 0-.359l1.016-.338c.454-.151.81-.507.96-.961z'></path>
               </svg>
-              <Box ml={"10px"}>Translate </Box>
+              <Box ml={"10px"}>   {t("translate")} </Box>
             </Button>
           </Box>
         </Box>
@@ -590,7 +590,7 @@ function SubtitleEditor() {
       text: "Second subtitle",
     },
   ]);
-
+  const { t } = useTranslation();
   const handleChange = (id: number, field: keyof Subtitle, value: string) => {
     setSubs((prev) =>
       prev.map((sub) => (sub.id === id ? { ...sub, [field]: value } : sub))
@@ -638,7 +638,7 @@ function SubtitleEditor() {
             </Typography>
             <Stack direction='row' spacing={2}>
               <TextField
-                label='Start Time'
+                label={t("start_time")}
                 value={sub.start}
                 onChange={(e) => handleChange(sub.id, "start", e.target.value)}
                 fullWidth
@@ -654,7 +654,7 @@ function SubtitleEditor() {
                 }}
               />
               <TextField
-                label='End Time'
+                label={t("end_time")}
                 value={sub.end}
                 onChange={(e) => handleChange(sub.id, "end", e.target.value)}
                 fullWidth
@@ -714,7 +714,7 @@ function SubtitleEditor() {
         startIcon={<Add />}
         sx={{ mt: 2, bgcolor: "rgb(5 122 85)", borderRadius: "10px" }}
         onClick={handleAdd}>
-        Add Subtitle
+        {t("add_sub")}
       </Button>
     </div>
   );

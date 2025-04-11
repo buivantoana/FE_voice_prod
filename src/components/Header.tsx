@@ -97,8 +97,8 @@ const Header = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          width: { xs: "90%", md: "80%" },
-          px: { xs: "5%", md: "10%" },
+          width: { xs: "90%", md: "84%" },
+          px: { xs: "5%", md: "8%" },
           py: "5px",
         }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
@@ -146,6 +146,16 @@ const Header = () => {
                     fontWeight={"500"}
                     color={"grey_500.main"}>
                     {t("materials_to_video")}
+                  </Typography>
+                </Box>
+              </NavLink>
+              <NavLink to='/translation'>
+                <Box padding={"9px 0"}>
+                  <Typography
+                    fontSize={".9rem"}
+                    fontWeight={"500"}
+                    color={"grey_500.main"}>
+                    {t("translate")}
                   </Typography>
                 </Box>
               </NavLink>

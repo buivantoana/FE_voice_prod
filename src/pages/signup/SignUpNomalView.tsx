@@ -1,19 +1,49 @@
-import { Box, Button, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogContent,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import React from "react";
-import { RiArrowLeftLine, RiTiktokFill } from "react-icons/ri";
+import { RiArrowLeftLine } from "react-icons/ri";
 import background_gif from "../../images/source.gif";
 import logo from "../../images/loading-lines-6747317-5601928.webp";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { Link } from "react-router-dom";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CustomTextField from "../../components/CustomTextField";
+import { Link } from "react-router-dom";
+import OTPInput from "react-otp-input";
 import { useTranslation } from "react-i18next";
 type Props = {
-  handleTikTokAuthorizeLink: any;
+  setOtp: any;
+  otp: any;
+  handleOTP: any;
+  handleClickOpenOtp: any;
+  handleCloseOtp: any;
+  openOtp: any;
+  setPhone: any;
+  phone: any;
+  handleChangeOtp: any;
+  handleRegister: any;
+  handleSubmit: any;
+  register: any;
+  errors: any;
 };
 
-const SignInView = ({ handleTikTokAuthorizeLink }: Props) => {
+const SignUpNomalView = ({
+  handleSubmit,
+  otp,
+  handleOTP,
+  handleChangeOtp,
+  handleCloseOtp,
+  openOtp,
+  setPhone,
+  phone,
+  handleRegister,
+  errors,
+  register,
+}: Props) => {
   const theme: any = useTheme();
   const { t, i18n } = useTranslation();
   return (
@@ -48,7 +78,6 @@ const SignInView = ({ handleTikTokAuthorizeLink }: Props) => {
           height: "100vh",
           backdropFilter: "blur(40px)",
         }}></Box>
-
       <Link to={"/"}>
         <Box
           sx={{
@@ -115,67 +144,65 @@ const SignInView = ({ handleTikTokAuthorizeLink }: Props) => {
               justifyContent={"center"}
               alignItems={"center"}
               gap={"10px"}>
-              <LockOutlinedIcon sx={{ fontSize: "45px" }} />
+              <AccountCircleIcon sx={{ fontSize: "45px" }} />
               <Typography
                 variant='h5'
                 fontSize={{ xs: "15px", md: "25px" }}
                 fontWeight={"bold"}>
-                {t("welcome_back")}
+                {t("create_account")}
               </Typography>
               <Typography
                 sx={{ display: "flex", gap: "5px" }}
                 color='grey_500.main'>
-                {t("do_you_have_account")} ?{" "}
-                <Link to={"/signup"}>
+                {t("have_an_account")} ?{" "}
+                <Link to={"/signin"}>
                   <Typography color='active.main' fontWeight={"500"}>
-                  {t("register")}
+                  {t("login")}
                   </Typography>
                 </Link>
               </Typography>
             </Box>
             <Box>
-            <CustomTextField
-                  register={()=>{}}
-                  errors={""}
-                  setValue={""}
-                  value={""}
-                  label={"Email"}
+              <form onSubmit={handleSubmit(handleOTP)}>
+                <CustomTextField
+                  register={register}
+                  errors={errors}
+                  setValue={setPhone}
+                  value={phone}
+                  label=  {t("name")}
                 />
-
-              <CustomTextField register={()=>{}}
-                  errors={""}
-                  setValue={""}
-                  value={""} label={t("password")} />
-              <Typography
-                mt={"5px"}
-                textAlign={"right"}
-                fontWeight={"500"}
-                color='active.main'>
-                 {t("forgot_password")}
-              </Typography>
-              <Button
-                onClick={handleTikTokAuthorizeLink}
-                variant='contained'
-                sx={{
-                  background: theme.palette.active.main,
-                  mt: "15px",
-                  width: "100%",
-                }}
-                >
-                {t("sign_up")} 
-              </Button>
-              <Button
-                onClick={handleTikTokAuthorizeLink}
-                variant='contained'
-                sx={{
-                  background: theme.palette.active.main,
-                  mt: "15px",
-                  width: "100%",
-                }}
-                startIcon={<RiTiktokFill />}>
-                {t("sign_up")} với tiktok
-              </Button>
-
+                <CustomTextField
+                  register={register}
+                  errors={errors}
+                  setValue={setPhone}
+                  value={phone}
+                  label=  {t("Email")}
+                />
+                <CustomTextField
+                  register={register}
+                  errors={errors}
+                  setValue={setPhone}
+                  value={phone}
+                  label=  {t("password")}
+                />
+                <CustomTextField
+                  register={register}
+                  errors={errors}
+                  setValue={setPhone}
+                  value={phone}
+                  label=  {t("forgot_password")}
+                />
+                <Button
+                  type='submit'
+                  variant='contained'
+                  sx={{
+                    background: theme.palette.active.main,
+                    mt: "15px",
+                    width: "100%",
+                  }}>
+                   {t("register")}
+                </Button>
+              </form>
               {i18n.language === "vi" && (
                 <Typography
                   my={"10px"}
@@ -219,8 +246,41 @@ const SignInView = ({ handleTikTokAuthorizeLink }: Props) => {
           </Box>
         </Box>
       </Box>
+      <Dialog
+        maxWidth='xs' // sets a maximum width
+        fullWidth
+        open={openOtp}
+        onClose={handleCloseOtp}
+        aria-labelledby='alert-dialog-title'
+        aria-describedby='alert-dialog-description'>
+        <DialogContent>
+          <Box textAlign={"center"} sx={{ div: { justifyContent: "center" } }}>
+            <Typography my={"20px"} variant='h6' fontWeight={"500"}>
+              {t("authentication")} OTP
+            </Typography>
+            <OTPInput
+              inputStyle='inputStyle'
+              value={otp}
+              onChange={handleChangeOtp}
+              numInputs={4}
+              renderInput={(props: any) => (
+                <input {...props} type='number' inputMode='numeric' />
+              )}
+            />
+            <Button
+              onClick={handleRegister}
+              variant='contained'
+              sx={{
+                background: theme.palette.active.main,
+                mt: "25px",
+              }}>
+              {t("authentication")} OTP
+            </Button>
+          </Box>
+        </DialogContent>
+      </Dialog>
     </Box>
   );
 };
 
-export default SignInView;
+export default SignUpNomalView;
