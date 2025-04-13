@@ -70,6 +70,7 @@ type Props = {
   setTypeVoice: any;
   typeVoice: any;
   is_action?: any;
+  filterVoice?: any;
 };
 
 const Author = ({
@@ -86,6 +87,7 @@ const Author = ({
   setTypeVoice,
   typeVoice,
   is_action,
+  filterVoice,
 }: Props) => {
   const theme: any = useTheme();
   const [voices, setVoices] = useState(
@@ -246,7 +248,11 @@ const Author = ({
 
     handleCloseAge();
   };
-  const [SelectedAcent, setSelectedAcent] = useState(null);
+  const [SelectedAcent, setSelectedAcent] = useState(
+    filterVoice ? filterVoice : null
+  );
+
+  console.log("accent", SelectedAcent);
   const handleSelectAcent = (Acent: any) => {
     if (Acent == SelectedAcent) {
       setSelectedAcent(null);
@@ -288,7 +294,9 @@ const Author = ({
   };
   console.log(voices);
   const handleReset = () => {
-    setSelectedAcent(null);
+    if (!filterVoice) {
+      setSelectedAcent(null);
+    }
     setSelectedAge(null);
     setSelectedGender(null);
     setSearch("");

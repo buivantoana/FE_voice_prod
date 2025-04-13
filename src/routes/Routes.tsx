@@ -19,6 +19,7 @@ import LayoutAdmin from "../components/layouts/LayoutAdmin";
 import useUTMTracker from "../components/useUTMTracker";
 import TranslationController from "../pages/translation/TranslationController";
 import SignUpNomalController from "../pages/signup/SignUpNomalController";
+import ForgotPasswordController from "../pages/signup/ForgotPasswordController";
 
 const Router = () => {
   const context: any = useCoursesContext();
@@ -63,6 +64,7 @@ const Router = () => {
       </Route>
       <Route path='signin' element={<SignInController />} />
       <Route path='signup' element={<SignUpNomalController />} />
+      <Route path='forgot-password' element={<ForgotPasswordController />} />
       <Route path='auth/callback' element={<SignUpController />} />
       <Route path='*' element={<NotFound />} />
     </Routes>

@@ -21,15 +21,16 @@ import {
 type Props = {};
 
 const TranslationController = (props: Props) => {
-  const [typeVoice, setTypeVoice] = useState("openai");
+  const [typeVoice, setTypeVoice] = useState("system");
   const [openAuthor, setOpenAuthor] = React.useState(false);
   const [voicesFavorite, setVoicesFavorite]: any = useState([]);
   const [loadingVoices, setLoadingVoices] = useState(false);
   const [voices, setVoices] = useState<any>([]);
-  const [voice, setVoice] = useState<any>({});
+  const [voice, setVoice] = useState<any>(null);
   const context: any = useCoursesContext();
   const [myVoices, setMyVoices] = useState<any>([]);
   const theme: any = useTheme();
+  const [selectedLanguage2, setSeletedLanguage2] = useState("Vietnamese");
   const handleClickOpenAuthor = () => {
     setOpenAuthor(true);
   };
@@ -125,9 +126,9 @@ const TranslationController = (props: Props) => {
       let data = await getVoicesOpenAi();
       console.log("AAAA data", data);
       if (data.voices && data.voices.length > 0) {
-        if (!(Object.keys(context.state.history).length > 0)) {
-          setVoice(data.voices[0]);
-        }
+        // if (!(Object.keys(context.state.history).length > 0)) {
+        //   setVoice(data.voices[0]);
+        // }
 
         setVoices(data.voices);
       }
@@ -138,7 +139,13 @@ const TranslationController = (props: Props) => {
   };
   return (
     <>
-      <TranslationView handleClickOpenAuthor={handleClickOpenAuthor} />
+      <TranslationView
+        handleClickOpenAuthor={handleClickOpenAuthor}
+        voice={voice}
+        typeVoice={typeVoice}
+        setSeletedLanguage2={setSeletedLanguage2}
+        selectedLanguage2={selectedLanguage2}
+      />
       <Dialog
         fullWidth
         maxWidth='xl' // Đặt maxWidth lớn nhất để có thể sử dụng toàn bộ chiều rộng
@@ -174,6 +181,7 @@ const TranslationController = (props: Props) => {
               typeVoice={typeVoice}
               setTypeVoice={setTypeVoice}
               is_action={true}
+              filterVoice={selectedLanguage2}
             />
           ) : (
             <Loading height={"100%"} />

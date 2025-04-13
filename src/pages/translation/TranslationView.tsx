@@ -20,15 +20,44 @@ import deepseek from "../../images/th__3_-removebg-preview.png";
 import { useTranslation } from "react-i18next";
 
 import VisualSlider from "../../components/CustomSlider";
+import alloy from "../../images/alloy.svg";
+import echo from "../../images/echo.svg";
+import fable from "../../images/fable.svg";
+import onyx from "../../images/onyx.svg";
+import nova from "../../images/nova.svg";
+import shimmer from "../../images/shimmer.svg";
+import vn from "../../images/vn.png";
+const images: any = {
+  alloy: alloy,
+  echo: echo,
+  fable: fable,
+  onyx: onyx,
+  nova: nova,
+  shimmer: shimmer,
+};
 type Props = {
   handleClickOpenAuthor: any;
+  voice: any;
+  typeVoice: any;
+  setSeletedLanguage2: any;
+  selectedLanguage2: any;
 };
 
-const TranslationView = ({ handleClickOpenAuthor }: Props) => {
+const TranslationView = ({
+  handleClickOpenAuthor,
+  voice,
+  typeVoice,
+  setSeletedLanguage2,
+  selectedLanguage2,
+}: Props) => {
   const [isFocused, setIsFocused] = useState(false);
   const [productUrl, setProductUrl] = useState("");
   const theme: any = useTheme();
   const { t } = useTranslation();
+  const [selectedLanguage, setSeletedLanguage] = useState("English");
+
+  const [selectedTranslation, setSelectedTranslation] = useState("deepseek");
+  console.log(voice);
   return (
     <Box sx={{ marginTop: "20px" }} px={{ xs: "2%", md: "11%" }}>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -218,6 +247,8 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
               <Select
                 className='more-select'
                 id='demo-simple-select'
+                value={selectedLanguage}
+                onChange={(e) => setSeletedLanguage(e.target.value)}
                 MenuProps={{
                   PaperProps: {
                     sx: {
@@ -283,6 +314,8 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
               <Select
                 className='more-select'
                 id='demo-simple-select'
+                value={selectedLanguage2}
+                onChange={(e) => setSeletedLanguage2(e.target.value)}
                 MenuProps={{
                   PaperProps: {
                     sx: {
@@ -341,11 +374,11 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
             </FormControl>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-            <Typography sx={{ my: "10px", fontWeight: "500", width: "45%" }}>
-            {t("translate_service")}
+            <Typography sx={{ my: "20px", fontWeight: "500", width: "45%" }}>
+              {t("translate_service")}
             </Typography>
-            <Typography sx={{ my: "10px", fontWeight: "500", width: "45%" }}>
-               {t("voice_sub")}
+            <Typography sx={{ my: "20px", fontWeight: "500", width: "45%" }}>
+              {t("voice_sub")}
             </Typography>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -353,6 +386,8 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
               <Select
                 className='more-select'
                 id='demo-simple-select'
+                value={selectedTranslation}
+                onChange={(e) => setSelectedTranslation(e.target.value)}
                 MenuProps={{
                   PaperProps: {
                     sx: {
@@ -378,6 +413,7 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
                     },
                 }}>
                 <MenuItem
+                  value={"deepseek"}
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -407,6 +443,7 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
                   </Box>
                 </MenuItem>
                 <MenuItem
+                  value={"chatgpt"}
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -449,13 +486,38 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
                   border: "1px solid #ccc",
                   background: "white",
                 }}>
-                <RiVoiceprintFill style={{ marginRight: "10px" }} />{" "}
-                {t("voice")}
+                <RiVoiceprintFill size={25} style={{ marginRight: "10px" }} />{" "}
+                {voice ? (
+                  <Box
+                    sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                    {/* <img
+                      src={
+                        typeVoice == "system" ||
+                        (typeVoice == "favorite" &&
+                          !images[voice.name && voice.name.toLowerCase()])
+                          ? voice.accent == "English"
+                            ? "https://flagcdn.com/w320/us.png"
+                            : vn
+                          : images[voice.name && voice.name.toLowerCase()]
+                      }
+                      alt=''
+                      width={"30px"}
+                      height={"30px"}
+                      style={{
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                      }}
+                    /> */}
+                    <Typography>{voice && voice.name && voice.name}</Typography>
+                  </Box>
+                ) : (
+                  t("voice")
+                )}
               </Button>
             </Box>
           </Box>
-          <Typography sx={{ my: "10px", fontWeight: "500", width: "45%" }}>
-          {t("volume")}
+          <Typography sx={{ my: "20px", fontWeight: "500", width: "45%" }}>
+            {t("volume")}
           </Typography>
           <Box
             sx={{
@@ -464,14 +526,14 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
               mt: "-30px",
             }}>
             <Box width={"45%"}>
-              <VisualSlider title={t("origin")}  />
+              <VisualSlider title={t("origin")} />
             </Box>
             <Box width={"45%"}>
               <VisualSlider title={t("translated")} />
             </Box>
           </Box>
-          <Typography sx={{ my: "10px", fontWeight: "500", width: "45%" }}>
-          {t("sub")}
+          <Typography sx={{ my: "20px", fontWeight: "500", width: "45%" }}>
+            {t("sub")}
           </Typography>
           <Box
             sx={{
@@ -486,23 +548,23 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
                 alignItems: "center",
                 justifyContent: "space-between",
               }}>
-              <Typography mt={"30px"}>   {t("sub")}</Typography>
+              <Typography mt={"30px"}> {t("sub")}</Typography>
               <CustomSwitch />
             </Box>
             <Box width={"45%"}>
-              <VisualSlider title={t("size")}  />
+              <VisualSlider title={t("size")} />
             </Box>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
             <Button
               variant='contained'
               sx={{
-                width: "50%",
+                width: "45%",
                 background: theme.palette.active.main,
-                fontSize: { xs: "10px", md: "15px" },
+                fontSize: { xs: "10px", md: "17px" },
                 borderRadius: "8px",
                 color: "white",
-                py: "5px",
+                py: "10px",
                 mt: "30px",
               }}>
               <svg
@@ -517,7 +579,7 @@ const TranslationView = ({ handleClickOpenAuthor }: Props) => {
                   fill='#fff'
                   d='M9.05 8.2a.474.474 0 0 1 .901 0l.847 2.542a3.8 3.8 0 0 0 2.4 2.399l2.541.846a.474.474 0 0 1 0 .9l-2.542.847a3.8 3.8 0 0 0-2.4 2.4l-.846 2.542a.474.474 0 0 1-.9 0l-.847-2.542a3.8 3.8 0 0 0-2.399-2.4l-2.542-.846a.474.474 0 0 1 0-.9l2.542-.847a3.8 3.8 0 0 0 2.4-2.4zM3.98 1.506a.285.285 0 0 1 .541 0l.508 1.525c.227.68.76 1.213 1.44 1.44l1.525.508a.285.285 0 0 1 0 .54l-1.525.508a2.27 2.27 0 0 0-1.44 1.44l-.508 1.525a.285.285 0 0 1-.54 0l-.508-1.525a2.27 2.27 0 0 0-1.44-1.44L.508 5.52a.285.285 0 0 1 0-.54l1.525-.508a2.27 2.27 0 0 0 1.44-1.44zM13.26.13a.19.19 0 0 1 .36 0l.338 1.016c.15.454.507.81.96.96l1.017.34a.19.19 0 0 1 0 .359l-1.016.338a1.52 1.52 0 0 0-.961.961l-.339 1.016a.19.19 0 0 1-.36 0l-.338-1.016a1.52 1.52 0 0 0-.96-.96l-1.015-.34a.19.19 0 0 1 0-.359l1.016-.338c.454-.151.81-.507.96-.961z'></path>
               </svg>
-              <Box ml={"10px"}>   {t("translate")} </Box>
+              <Box ml={"10px"}> {t("translate")} </Box>
             </Button>
           </Box>
         </Box>

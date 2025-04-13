@@ -157,7 +157,7 @@ const SignUpNomalView = ({
                 {t("have_an_account")} ?{" "}
                 <Link to={"/signin"}>
                   <Typography color='active.main' fontWeight={"500"}>
-                  {t("login")}
+                    {t("login")}
                   </Typography>
                 </Link>
               </Typography>
@@ -169,28 +169,28 @@ const SignUpNomalView = ({
                   errors={errors}
                   setValue={setPhone}
                   value={phone}
-                  label=  {t("name")}
+                  label={t("name")}
                 />
                 <CustomTextField
                   register={register}
                   errors={errors}
                   setValue={setPhone}
                   value={phone}
-                  label=  {t("Email")}
+                  label={t("Email")}
                 />
                 <CustomTextField
                   register={register}
                   errors={errors}
                   setValue={setPhone}
                   value={phone}
-                  label=  {t("password")}
+                  label={t("password")}
                 />
                 <CustomTextField
                   register={register}
                   errors={errors}
                   setValue={setPhone}
                   value={phone}
-                  label=  {t("forgot_password")}
+                  label={t("confirm_password")}
                 />
                 <Button
                   type='submit'
@@ -200,7 +200,7 @@ const SignUpNomalView = ({
                     mt: "15px",
                     width: "100%",
                   }}>
-                   {t("register")}
+                  {t("register")}
                 </Button>
               </form>
               {i18n.language === "vi" && (

@@ -97,8 +97,8 @@ const Header = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          width: { xs: "90%", md: "84%" },
-          px: { xs: "5%", md: "8%" },
+          width: { xs: "90%", md: "90%" },
+          px: { xs: "5%", md: "5%" },
           py: "5px",
         }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
@@ -199,14 +199,14 @@ const Header = () => {
                   </Typography>
                 </Box>
               </NavLink>
-              <Box padding={"9px 0"} onClick={()=>setOpenContact(true)}>
-                  <Typography
-                    fontSize={".9rem"}
-                    fontWeight={"500"}
-                    color={"grey_500.main"}>
-                    {t("contact")}
-                  </Typography>
-                </Box>
+              <Box padding={"9px 0"} onClick={() => setOpenContact(true)}>
+                <Typography
+                  fontSize={".9rem"}
+                  fontWeight={"500"}
+                  color={"grey_500.main"}>
+                  {t("contact")}
+                </Typography>
+              </Box>
             </Stack>
           </Box>
         </Hidden>
@@ -244,7 +244,9 @@ const Header = () => {
                   alt=''
                 />
               )}
-              {(i18n.language === "us" || i18n.language === "en-US"|| i18n.language === "en") && (
+              {(i18n.language === "us" ||
+                i18n.language === "en-US" ||
+                i18n.language === "en") && (
                 <img
                   src={us}
                   width={25}
@@ -716,31 +718,34 @@ const Header = () => {
               </Box>
             </Link>
             <Box
-                mt={"20px"}
-                border={"1px solid #dddddd"}
-                borderRadius={"10px"}
-                onClick={()=>setOpenContact(true)}
-                p={"10px 15px"}
-                sx={{
-                  cursor: "pointer",
-                  transition: "background-color 0.3s, color 0.3s", // Smooth transition for hover
-                  "&:hover": {
-                    backgroundColor: "grey_700.main", // Background on hover
-                    color: "active.main", // Text and icon color on hover
-                  },
-                  "&:hover .MuiSvgIcon-root": {
-                    color: "active.main", // Icon color on hover
-                  },
-                }}
-                width={"calc(100%-30px)"}>
-                <Box display={"flex"} alignItems={"center"} gap={"10px"}>
+              mt={"20px"}
+              border={"1px solid #dddddd"}
+              borderRadius={"10px"}
+              onClick={() => setOpenContact(true)}
+              p={"10px 15px"}
+              sx={{
+                cursor: "pointer",
+                transition: "background-color 0.3s, color 0.3s", // Smooth transition for hover
+                "&:hover": {
+                  backgroundColor: "grey_700.main", // Background on hover
+                  color: "active.main", // Text and icon color on hover
+                },
+                "&:hover .MuiSvgIcon-root": {
+                  color: "active.main", // Icon color on hover
+                },
+              }}
+              width={"calc(100%-30px)"}>
+              <Box display={"flex"} alignItems={"center"} gap={"10px"}>
                 <RiContactsLine />
-                  <Typography> {t("contact")}</Typography>
-                </Box>
+                <Typography> {t("contact")}</Typography>
               </Box>
+            </Box>
           </Box>
         </Drawer>
-        <ModalContact openContact={openContact} handleCloseContact={()=>setOpenContact(false)}/>
+        <ModalContact
+          openContact={openContact}
+          handleCloseContact={() => setOpenContact(false)}
+        />
       </Box>
     </Box>
   );
@@ -759,17 +764,17 @@ const WhiteTooltip = styled(({ className, ...props }: any) => (
 });
 
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: {xs:250,md:400},
-  bgcolor: 'background.paper',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: { xs: 250, md: 400 },
+  bgcolor: "background.paper",
   boxShadow: 24,
   p: 4,
 };
 
-function ModalContact({openContact,handleCloseContact}:any) {
+function ModalContact({ openContact, handleCloseContact }: any) {
   const { t } = useTranslation();
   const theme: any = useTheme();
   return (
@@ -777,16 +782,18 @@ function ModalContact({openContact,handleCloseContact}:any) {
       <Modal
         open={openContact}
         onClose={handleCloseContact}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
+        aria-labelledby='modal-modal-title'
+        aria-describedby='modal-modal-description'>
         <Box sx={style}>
-          <Typography id="modal-modal-description" >
-          {t("contact_us")}: <b>ai@gmv.vn</b>
+          <Typography id='modal-modal-description'>
+            {t("contact_us")}: <b>ai@gmv.vn</b>
           </Typography>
           <Box mt={"8px"} display={"flex"} justifyContent={"end"}>
-
-          <Button onClick={handleCloseContact} sx={{ background: theme.palette.active.main,color:"white"}}>{t("close")}</Button>
+            <Button
+              onClick={handleCloseContact}
+              sx={{ background: theme.palette.active.main, color: "white" }}>
+              {t("close")}
+            </Button>
           </Box>
         </Box>
       </Modal>
