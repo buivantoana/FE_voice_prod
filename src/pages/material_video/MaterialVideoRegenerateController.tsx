@@ -129,7 +129,7 @@ const MaterialVideoRegenerateController = ({
       (async () => {
         try {
           let data = await fetch(
-            "https://dev.ttsopenai.zeezoo.mobi/product/get/info",
+            "https://dev.ttsopenai.zeezoo.mobi/api/product/get/info",
             {
               method: "POST",
               headers: {
@@ -182,7 +182,7 @@ const MaterialVideoRegenerateController = ({
     loadVoicesOpenai();
     (async () => {
       try {
-        let data = await fetch("https://dev.ttsopenai.zeezoo.mobi/product/samples", {
+        let data = await fetch("https://dev.ttsopenai.zeezoo.mobi/api/product/samples", {
           method: "GET",
           headers: {
             "Content-type": "application/json",
