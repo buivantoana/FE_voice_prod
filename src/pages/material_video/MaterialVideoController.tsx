@@ -97,7 +97,7 @@ const MaterialVideoController = (props: Props) => {
             (async () => {
               try {
                 let data = await fetch(
-                  "https://api.ttsopenai.zeezoo.mobi/product/get/info",
+                  "https://dev.ttsopenai.zeezoo.mobi/product/get/info",
                   {
                     method: "POST",
                     headers: {
@@ -167,7 +167,7 @@ const MaterialVideoController = (props: Props) => {
     loadVoicesOpenai();
     (async () => {
       try {
-        let data = await fetch("https://api.ttsopenai.zeezoo.mobi/product/samples", {
+        let data = await fetch("https://dev.ttsopenai.zeezoo.mobi/product/samples", {
           method: "GET",
           headers: {
             "Content-type": "application/json",
